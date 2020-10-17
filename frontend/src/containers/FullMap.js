@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../customCss/map.css'
 import mapStyle from '../customCss/mapStyle'
 import {
@@ -29,11 +29,16 @@ const options  = {
 };
 
 
+
 const FullMap = (props) => {
+
+const [markers, setMarkers] = useState([])
+
 const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyBMgD_XMTaESHuRTX8kdT05q_oB3ce84OI',
-    libraries,
+    libraries
 });
+
 
 if (loadError) return 'Error Loading Maps';
 if (!isLoaded) return 'Loading Maps';
@@ -58,7 +63,19 @@ if (!isLoaded) return 'Loading Maps';
                 center={center}
                 zoom={12}
                 options={options}
+                onClick={(event)=>{
+                    setMarkers((current)=>[
+                        ...current,
+                        {
+                            lat: event .latLng.lat(),
+                            lng: event.latLng.lng(),
+                            time: new Date(),
+                    },
+                ]);
+                }}
+                   
             >
+                {markers.map(marker => <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}} icon={{url:'/Sound-Wave-Headphones.svg'}}/>)}
             </GoogleMap>
         </div>
     )

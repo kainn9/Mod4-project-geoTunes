@@ -3,9 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 import { useHistory } from "react-router";
 
 import SignedOutContainer from './containers/SignedOutContainer';
-import SignedInContainer from './containers/SignedInContainer'
+import SignedInContainer from './containers/SignedInContainer';
 import Login from './containers/Login';
 import SignUp from './components/Signup';
+import CreatePathContainer from './containers/CreatePathContainer'
 
 import './App.css';
 
@@ -102,11 +103,19 @@ const App = () => {
       )
 
     } else {
-      return <Route path="/home" render={() => <SignedInContainer 
+      return (
+        <Switch>
+          <Route path='/home' render={() => <SignedInContainer  user={user} logOutHandler={logOutHandler}/>}/>
+          <Route  path="/create" render={() => <CreatePathContainer user={user} logOutHandler={logOutHandler}/>}/> 
+        </Switch>
+    
+      /* <Route path="/home" render={() => <SignedInContainer 
         user={user}
-        logOutHandler={logOutHandler}
-        
-        />}/> 
+        logOutHandler={logOutHandler} />}
+    /> 
+    <Route path="/create" render={()->{Crae}} */
+   
+      )
     }; 
   };
 

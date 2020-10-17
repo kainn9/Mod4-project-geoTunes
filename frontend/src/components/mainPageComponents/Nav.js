@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 import { Button, Menu } from 'semantic-ui-react'
-import SpotifyAuthButton from './SpotifyAuthButton'
+import SpotifyAuthButton from './SpotifyAuthButton';
+import {NavLink} from 'react-router-dom';
+
 
 
 const Nav = (props) => {
@@ -18,8 +20,9 @@ const Nav = (props) => {
       <Menu.Item>
       {
       token ? 
-      (
-        <Button>Create Path</Button>
+      (<NavLink to='/create'>
+          <Button>Create Path</Button>
+        </NavLink>
       )
       :
       (
