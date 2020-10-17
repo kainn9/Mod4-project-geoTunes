@@ -1,4 +1,5 @@
 import React from 'react';
+import '../customCss/map.css'
 import mapStyle from '../customCss/mapStyle'
 import {
     GoogleMap,
@@ -39,8 +40,8 @@ if (!isLoaded) return 'Loading Maps';
 
     return (
         <div>
-            <h1>
-                Our App{" "} <span role='img' aria-label='test'>🦾</span> 
+            <h1 id = 'mapHeader'>
+                Our App{" "} <span role='img' aria-label='arm'>🦾</span> 
             </h1>
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
