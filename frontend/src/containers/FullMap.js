@@ -29,7 +29,7 @@ const options  = {
 };
 
 
-const FullMap = () => {
+const FullMap = (props) => {
 const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyBMgD_XMTaESHuRTX8kdT05q_oB3ce84OI',
     libraries,
@@ -40,9 +40,19 @@ if (!isLoaded) return 'Loading Maps';
 
     return (
         <div>
-            <h1 id = 'mapHeader'>
-                Our App{" "} <span role='img' aria-label='arm'>🦾</span> 
-            </h1>
+            {
+                props.user ? 
+                (
+                    <h1 id = 'mapHeader'>
+                        Our App{" "} <span role='img' aria-label='arm'>🦾</span> 
+                    </h1>
+                )
+                :
+                (
+                    null
+                )
+            }
+            
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
