@@ -21,7 +21,10 @@ const center = {
 };
 
 const options  = {
-    styles: mapStyle
+    styles: mapStyle,
+    disableDefaultUI: true,
+    zoomControl: true,
+
 };
 
 
@@ -36,6 +39,9 @@ if (!isLoaded) return 'Loading Maps';
 
     return (
         <div>
+            <h1>
+                Our App{" "} <span role='img' aria-label='test'>🦾</span> 
+            </h1>
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
