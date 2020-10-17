@@ -4,9 +4,7 @@ import { Button, Checkbox, Form, Segment } from 'semantic-ui-react'
 
 import LoginHeader from './LoginHeader';
 
-import { SpotifyApiContext } from 'react-spotify-api'
-import { SpotifyAuth, Scopes } from 'react-spotify-auth'
-import 'react-spotify-auth/dist/index.css'
+
 
 const LoginForm  = (props) => {
     const [username, setUsername] = useState('');
@@ -81,28 +79,6 @@ const LoginForm  = (props) => {
                     Or Click to Register
                     </Button>
                 </Link>
-                <div>
-                    {token ? 
-                    (
-                        <SpotifyApiContext.Provider value={token}>
-                        {'e4a46774ea644f528544da64e917d641'}
-                        <p>You are authorized with token: {token}</p>
-                        </SpotifyApiContext.Provider>
-                    ) 
-                    :
-                    (
-                        // Display the login page
-                        <SpotifyAuth
-                        redirectUri='http://localhost:3001/'
-                        clientID='4fc7bf448443478b8181ef1cc8d069ad'
-                        scopes={[Scopes.userReadPrivate, 'user-read-email']} // either style will work
-                        localStorage = {true}
-                    />
-                     )}
-                </div>
-     
-                  
-        
             </Form>
         </Segment>
     )
