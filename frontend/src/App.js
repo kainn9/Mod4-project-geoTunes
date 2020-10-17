@@ -39,7 +39,7 @@ const App = () => {
     };
 
     const loginHandlerWithSpotify = () => {
-      
+        console.log('spoty')
     }
 
     const loginHandler = (userInfo) => {
@@ -101,7 +101,7 @@ const App = () => {
       return (
         <Switch>
           <Route path='/signup' render={() => <SignUp signUpHandler={signUpHandler}/>}/>
-          <Route  exact path="/" render={() => <SignedOutContainer loginHandler={loginHandler}/>}/> 
+          <Route  exact path="/" render={() => <SignedOutContainer loginHandler={loginHandlerWithSpotify}/>}/> 
         </Switch>
       )
 
