@@ -16,8 +16,8 @@ const mapContainerStyle = {
 }
 
 const center = {
-    lat: 43,
-    lng: -79,
+    lat: 40.7128,
+    lng: -74.0060,
 }
 
 
@@ -35,7 +35,7 @@ if (!isLoaded) return 'Loading Maps';
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
-                zoom={8}
+                zoom={12}
             >
             </GoogleMap>
         </div>
