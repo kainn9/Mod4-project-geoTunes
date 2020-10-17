@@ -1,5 +1,5 @@
 import React from 'react';
-import { SpotifyApiContext } from 'react-spotify-api';
+//import { SpotifyApiContext } from 'react-spotify-api';
 import { SpotifyAuth, Scopes } from 'react-spotify-auth';
 
 const SpotifyAuthButton = (props) => {

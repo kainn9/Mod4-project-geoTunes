@@ -1,5 +1,5 @@
 import React from 'react';
-
+import mapStyle from '../customCss/mapStyle'
 import {
     GoogleMap,
     useLoadScript,
@@ -8,17 +8,21 @@ import {
 
 } from '@react-google-maps/api';
 
-const libraries = ['places']
+const libraries = ['places'];
 
 const mapContainerStyle = {
     width: '100vw',
-    height: '100vh',
-}
+    height: '84vh',
+};
 
 const center = {
     lat: 40.7128,
     lng: -74.0060,
-}
+};
+
+const options  = {
+    styles: mapStyle
+};
 
 
 const FullMap = () => {
@@ -36,6 +40,7 @@ if (!isLoaded) return 'Loading Maps';
                 mapContainerStyle={mapContainerStyle}
                 center={center}
                 zoom={12}
+                options={options}
             >
             </GoogleMap>
         </div>
