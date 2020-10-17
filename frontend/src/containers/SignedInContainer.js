@@ -9,10 +9,7 @@ const SignedInContainer = (props) =>{
     return(
         <div>
             <h1> This is the Signed in container </h1>
-            <Nav />
-            <button onClick = {() => props.logOutHandler()} >
-                signOut
-            </button>
+            <Nav logOutHandler={props.logOutHandler} />
         </div>
     );
 };

@@ -3,7 +3,7 @@ import { Button, Menu } from 'semantic-ui-react'
 import SpotifyAuthButton from './SpotifyAuthButton'
 
 
-const Nav = () => {
+const Nav = (props) => {
 
   const [token, setToken] = useState(localStorage.getItem('spotifyAuthToken'));
 
@@ -19,7 +19,7 @@ const Nav = () => {
       {
       token ? 
       (
-        <Button>Button 1</Button>
+        <Button>Create Path</Button>
       )
       :
       (
@@ -32,7 +32,9 @@ const Nav = () => {
       </Menu.Item>
 
       <Menu.Item>
-        <Button>Button 3</Button>
+        <Button
+          onClick = { () => props.logOutHandler()}
+        >Sign out</Button>
       </Menu.Item>
     </Menu>
   )
