@@ -4,11 +4,11 @@ import { useHistory } from "react-router";
 
 import SignedOutContainer from './containers/SignedOutContainer';
 import SignedInContainer from './containers/SignedInContainer'
-import Login from './components/Login';
+import Login from './containers/Login';
 import SignUp from './components/Signup';
 
 import './App.css';
-import 'semantic-ui-css/semantic.min.css'
+
 
 const App = () => {
     const history = useHistory();
@@ -37,6 +37,10 @@ const App = () => {
       history.push('/');
       setUser(null);
     };
+
+    const loginHandlerWithSpotify = () => {
+      
+    }
 
     const loginHandler = (userInfo) => {
 
@@ -96,9 +100,8 @@ const App = () => {
     } else if(!user) {
       return (
         <Switch>
-          <Route path='/login' render={() => <Login loginHandler={loginHandler} />} />
           <Route path='/signup' render={() => <SignUp signUpHandler={signUpHandler}/>}/>
-          <Route  exact path="/" render={() => <SignedOutContainer/>}/> 
+          <Route  exact path="/" render={() => <SignedOutContainer loginHandler={loginHandler}/>}/> 
         </Switch>
       )
 

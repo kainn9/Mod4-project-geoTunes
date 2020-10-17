@@ -1,0 +1,43 @@
+@font-face {
+    font-family: lequire;
+    src: url('./fonts/Lequire.otf') format("opentype");
+}
+/* body {
+    background-image: url('../images/world\ map\ IV.png');
+} */
+
+#loginSegment {
+    background: #2FA0B1;
+}
+
+#loginForm {
+    display: grid;
+}
+
+#loginIcon {
+    color: #FFFFFA;
+}
+
+#loginHeader{
+    color: #FFFFFA;
+    font-family: lequire;
+}
+
+#loginSubHeader {
+    color: #050505;
+}
+#loginForm .formText label {
+    color: #9FDAE5;
+}
+#termsCheckBox label {
+    color: #BECEDB;
+}
+
+.formbtn {
+    
+    background-color: #BECEDB;
+}
+
+#registerBtn {
+    width: 100%;
+}
