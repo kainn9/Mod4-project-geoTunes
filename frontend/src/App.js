@@ -8,6 +8,7 @@ import Login from './components/Login';
 import SignUp from './components/Signup';
 
 import './App.css';
+import 'semantic-ui-css/semantic.min.css'
 
 const App = () => {
     const history = useHistory();
@@ -36,7 +37,7 @@ const App = () => {
       history.push('/');
       setUser(null);
     };
-    
+
     const loginHandler = (userInfo) => {
 
       const options ={
