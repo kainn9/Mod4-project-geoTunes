@@ -7,23 +7,31 @@
 } */
 
 #loginSegment {
+
     background: #2FA0B1;
 }
 
 #loginForm {
-    display: grid;
+    height: 40vh;
+    display: flex;
+    flex-direction: column
+
 }
+
+
 
 #loginIcon {
     color: #FFFFFA;
 }
 
 #loginHeader{
+  
     color: #FFFFFA;
     font-family: lequire;
 }
 
 #loginSubHeader {
+
     color: #050505;
 }
 #loginForm .formText label {
