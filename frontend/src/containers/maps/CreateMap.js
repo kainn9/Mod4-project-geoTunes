@@ -1,6 +1,7 @@
 import React, {useState, useCallback, useRef} from 'react';
 import mapStyle from './../../customCss/mapStyle';
 import Nav from '../../components/mainPageComponents/Nav';
+import { UserPlaylists } from 'react-spotify-api'
 import {
     GoogleMap,
     useLoadScript,
@@ -245,6 +246,16 @@ const Search = ({panTo}) =>{
                  </ComboboxList>
             </ComboboxPopover>
         </Combobox>
+
+      
+
+                <UserPlaylists>
+                    {(playlists, loading, error) =>
+                        playlists.data ? (
+                        playlists.data.items.map(pl => <h3 key={pl.id}>{pl.name}</h3>)
+                        ) : null
+                    }
+                </UserPlaylists>
         </div>
         
     )
