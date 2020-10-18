@@ -79,48 +79,48 @@ const CreateMap = (props) => {
 
     let counter = 0
 
-const onMapClick = useCallback((event) => {
+    const onMapClick = useCallback((event) => {
 
-    if (counter < 5) {
-        setMarkers((current)=>[
-            ...current,
-            {
-                lat: event.latLng.lat(),
-                lng: event.latLng.lng(),
-                time: new Date(),
-        },
-    ])
-    counter += 1
+        if (counter < 5) {
+            setMarkers((current)=>[
+                ...current,
+                {
+                    lat: event.latLng.lat(),
+                    lng: event.latLng.lng(),
+                    time: new Date(),
+            },
+        ])
+        counter += 1
     
-    } else {
-        alert('Max 5 Markers')
+        } else {
+            alert('Max 5 Markers')
     };
 
     
-},[]) ; 
+    },[]) ; 
 
-const mapRef = useRef();
+    const mapRef = useRef();
 
-const onMapLoad= useCallback((map)=>{
-    mapRef.current=map; 
-},[])
+    const onMapLoad= useCallback((map)=>{
+        mapRef.current=map; 
+    },[])
 
-const panTo = useCallback(({lat, lng})=> {
-    mapRef.current.panTo({lat, lng});
-    mapRef.current.setZoom(14);
-},[]);
+    const panTo = useCallback(({lat, lng})=> {
+        mapRef.current.panTo({lat, lng});
+        mapRef.current.setZoom(14);
+    },[]);
 
-const [markers, setMarkers] = useState([])
-const [selected, setSelected] = useState(null)
+    const [markers, setMarkers] = useState([])
+    const [selected, setSelected] = useState(null)
 
-const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDyHRdd4NQOPirfP_EtTiiK7TTHn1ySYZg',
-    libraries
-});
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: 'AIzaSyDyHRdd4NQOPirfP_EtTiiK7TTHn1ySYZg',
+        libraries
+    });
 
 
-if (loadError) return 'Error Loading Maps';
-if (!isLoaded) return 'Loading Maps';
+    if (loadError) return 'Error Loading Maps';
+    if (!isLoaded) return 'Loading Maps';
 
     return (
         <div>
@@ -181,6 +181,22 @@ if (!isLoaded) return 'Loading Maps';
                 </InfoWindow>) : null}
             </GoogleMap>
             {console.log(markers)}
+            <div id ='playListContainter'>
+                <ul>
+                    <UserPlaylists>
+                    
+                            {(playlists, loading, error) =>
+                                playlists.data ? (
+                                playlists.data.items.map(pl => (
+                                    <li key={pl.id}>{pl.name}</li>
+                                        
+                                    ))
+                                ) : null
+                            }
+                        
+                    </UserPlaylists>
+                </ul>
+            </div>
         </div>
     );
 }
@@ -245,18 +261,9 @@ const Search = ({panTo}) =>{
                 ))}
                  </ComboboxList>
             </ComboboxPopover>
-        </Combobox>
-
-      
-
-                <UserPlaylists>
-                    {(playlists, loading, error) =>
-                        playlists.data ? (
-                        playlists.data.items.map(pl => <h3 key={pl.id}>{pl.name}</h3>)
-                        ) : null
-                    }
-                </UserPlaylists>
+        </Combobox>  
         </div>
+        
         
     )
 
