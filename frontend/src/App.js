@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useHistory } from "react-router";
-
-import SignedOutContainer from './containers/SignedOutContainer';
-import SignedInContainer from './containers/SignedInContainer';
-import Login from './containers/Login';
-import SignUp from './components/Signup';
-import CreatePathContainer from './containers/CreatePathContainer'
-
+import SignUp from './components/LoginComponents/Signup';
+import HomeContainer from './containers/HomeContainer';
+import PreviewContainer from './containers/PreviewContainer';
 import './App.css';
+import CreateMap from './containers/maps/CreateMap';
 
 
 const App = () => {
@@ -98,15 +95,15 @@ const App = () => {
       return (
         <Switch>
           <Route path='/signup' render={() => <SignUp signUpHandler={signUpHandler}/>}/>
-          <Route  exact path="/" render={() => <SignedOutContainer loginHandler={loginHandler}/>}/> 
+          <Route  exact path="/" render={() => <PreviewContainer loginHandler={loginHandler}/>}/> 
         </Switch>
       )
 
     } else {
       return (
         <Switch>
-          <Route path='/home' render={() => <SignedInContainer  user={user} logOutHandler={logOutHandler}/>}/>
-          <Route  path="/create" render={() => <CreatePathContainer user={user} logOutHandler={logOutHandler}/>}/> 
+          <Route path='/home' render={() => <HomeContainer  user={user} logOutHandler={logOutHandler}/>}/>
+          <Route  path="/create" render={() => <CreateMap user={user} logOutHandler={logOutHandler}/>}/> 
         </Switch>
     
       /* <Route path="/home" render={() => <SignedInContainer 

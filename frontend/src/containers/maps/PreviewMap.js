@@ -1,6 +1,5 @@
 import React, {useState, useCallback, useRef} from 'react';
-import '../customCss/map.css';
-import mapStyle from '../customCss/mapStyle';
+import mapStyle from '../../customCss/mapStyle';
 import {
     GoogleMap,
     useLoadScript,
@@ -25,6 +24,7 @@ import{
 } from "@reach/combobox";
 
 import "@reach/combobox/styles.css";
+import '../../customCss/map.css';
 
 
 
@@ -49,7 +49,7 @@ const options  = {
 
 
 
-const FullMap = (props) => {
+const PreviewMap = (props) => {
 
 const onMapClick = useCallback((event)=>{
     setMarkers((current)=>[
@@ -112,6 +112,7 @@ if (!isLoaded) return 'Loading Maps';
                    
             >
                 {markers.map(marker => (
+                    
                 <Marker 
                 key={marker.time.toISOString()} 
                 position={{lat: marker.lat, lng: marker.lng}} 
@@ -135,10 +136,13 @@ if (!isLoaded) return 'Loading Maps';
                         <h2>
                             Playlist created at:
                         </h2>
-                <p> {formatRelative(selected.time, new Date())}</p>
+                            <p> {formatRelative(selected.time, new Date())}</p>
+                            <h2> cords:</h2>
+                            <p>lat: {selected.lat}, lng:{selected.lng} </p>
                     </div>
                 </InfoWindow>) : null}
             </GoogleMap>
+            {console.log(markers)}
         </div>
     );
 }
@@ -211,4 +215,4 @@ const Search = ({panTo}) =>{
 
 
 }
-export default FullMap
+export default PreviewMap

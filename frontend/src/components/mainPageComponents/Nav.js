@@ -20,8 +20,9 @@ const Nav = (props) => {
       <Menu.Item>
       {
       token ? 
-      (<NavLink to='/create'>
-          <Button>Create Path</Button>
+      (
+        <NavLink to='/create'>
+           {!props.createMode ? <Button>Create Path</Button> : <Button>Submit Path</Button> }
         </NavLink>
       )
       :
