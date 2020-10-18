@@ -17,6 +17,11 @@ class Api::V1::PlayRoutesController < ApplicationController
         
     end
 
+    def index
+        playRoutes = PlayRoute.all
+        render json: playRoutes
+    end
+
     private
     
     def play_route_params

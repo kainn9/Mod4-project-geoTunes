@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef} from 'react';
+import React, {useState, useCallback, useRef, useEffect} from 'react';
 import Nav from '../../components/mainPageComponents/Nav';
 import mapStyle from './../../customCss/mapStyle';
 import {
@@ -52,16 +52,18 @@ const options  = {
 
 const ViewMap = (props) => {
 
-const onMapClick = useCallback((event)=>{
-    setMarkers((current)=>[
-        ...current,
-        {
-            lat: event.latLng.lat(),
-            lng: event.latLng.lng(),
-            time: new Date(),
-    },
-]);
-},[]) ; 
+    useEffect(() => {
+
+        fetch('http://localhost:3000/api/v1/play_routes')
+        .then(r => r.json() )
+        .then(pins => {
+            console.log(pins)
+        })
+    
+    }
+    ,[])
+
+
 
 const mapRef = useRef();
 
@@ -109,7 +111,6 @@ if (!isLoaded) return 'Loading Maps';
                 center={center}
                 zoom={12}
                 options={options}
-                onClick={onMapClick}
                 onLoad={onMapLoad}
                    
             >
