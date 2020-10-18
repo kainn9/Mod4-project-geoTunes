@@ -52,12 +52,31 @@ const options  = {
 
 const ViewMap = (props) => {
 
+    const prepPinRender = (prd) => {
+        console.log('prd', prd)
+        return prd.map((pr, i) => {
+            console.log('inMap', pr.pins[0])
+            return {
+                lat: pr.pins[0].lat, 
+                lng: pr.pins[0].lng, 
+                id: i,
+                subPins: pr.pins,
+            }
+        })
+    }
+
     useEffect(() => {
 
         fetch('http://localhost:3000/api/v1/play_routes')
         .then(r => r.json() )
-        .then(pins => {
-            console.log(pins)
+        .then(playRoutes => {
+             let allPins = prepPinRender(playRoutes);
+
+            console.log('pins', allPins)
+            setMarkers((current)=>[
+                ...current,
+                ...allPins
+            ])
         })
     
     }
@@ -117,7 +136,7 @@ if (!isLoaded) return 'Loading Maps';
                 {markers.map(marker => (
                     
                 <Marker 
-                key={marker.time.toISOString()} 
+                key={marker.id} 
                 position={{lat: marker.lat, lng: marker.lng}} 
                 icon={{
                     url:'/Sound-Wave-Headphones.svg', 
@@ -136,16 +155,21 @@ if (!isLoaded) return 'Loading Maps';
                     setSelected(null);  
                 }}>
                     <div>
-                        <h2>
-                            Playlist created at:
-                        </h2>
-                            <p> {formatRelative(selected.time, new Date())}</p>
                             <h2> cords:</h2>
                             <p>lat: {selected.lat}, lng:{selected.lng} </p>
+                            
+                             subcords: 
+                            <ul>
+                                   <li>
+                                       {selected.subPins.map((p, i) => {
+                                            if (i > 1) return `SubCord ${i}: lat: ${p.lat} lng: ${p.lng} `
+                                        })}
+                                    </li> 
+                            </ul>
+                            
                     </div>
                 </InfoWindow>) : null}
             </GoogleMap>
-            {console.log(markers)}
         </div>
     );
 }
