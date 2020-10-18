@@ -1,4 +1,5 @@
-import React from 'react-dom';
+import React from 'react';
+
 
 const CreatePathContainer = (props) => {
     return (
