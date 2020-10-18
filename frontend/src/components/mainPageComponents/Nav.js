@@ -22,7 +22,14 @@ const Nav = (props) => {
       token ? 
       (
         <NavLink to='/create'>
-           {!props.createMode ? <Button>Create Path</Button> : <Button>Submit Path</Button> }
+           {!props.createMode ? 
+              <Button>Create Path</Button> 
+              :
+
+              <Button
+                onClick={props.createPath}
+              >Submit Path</Button>
+            }
         </NavLink>
       )
       :
@@ -37,7 +44,7 @@ const Nav = (props) => {
 
       <Menu.Item>
         <Button
-          onClick = { () => props.logOutHandler()}
+          onClick = {props.logOutHandler}
         >Sign out</Button>
       </Menu.Item>
     </Menu>

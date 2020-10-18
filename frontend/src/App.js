@@ -31,6 +31,7 @@ const App = () => {
     }, []);
 
     const logOutHandler = () => {
+      console.log('logoutHandler')
       localStorage.clear();
       history.push('/');
       setUser(null);
@@ -104,14 +105,7 @@ const App = () => {
         <Switch>
           <Route path='/home' render={() => <HomeContainer  user={user} logOutHandler={logOutHandler}/>}/>
           <Route  path="/create" render={() => <CreateMap user={user} logOutHandler={logOutHandler}/>}/> 
-        </Switch>
-    
-      /* <Route path="/home" render={() => <SignedInContainer 
-        user={user}
-        logOutHandler={logOutHandler} />}
-    /> 
-    <Route path="/create" render={()->{Crae}} */
-   
+        </Switch> 
       )
     }; 
   };

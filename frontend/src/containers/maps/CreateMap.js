@@ -52,15 +52,44 @@ const options  = {
 
 const CreateMap = (props) => {
 
-const onMapClick = useCallback((event)=>{
-    setMarkers((current)=>[
-        ...current,
-        {
-            lat: event.latLng.lat(),
-            lng: event.latLng.lng(),
-            time: new Date(),
-    },
-]);
+
+    const createPath = () => {
+            let playRouteData = {
+                playRouteData: markers,
+                user: props.user.user
+            }
+            //console.log('userTest', props.user.user)
+
+        fetch('http://localhost:3000/api/v1/play_routes', {
+            method: 'POST',
+            headers: {
+                Accepts: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(playRouteData)
+        })
+    }
+
+    let counter = 0
+
+const onMapClick = useCallback((event) => {
+
+    if (counter < 5) {
+        setMarkers((current)=>[
+            ...current,
+            {
+                lat: event.latLng.lat(),
+                lng: event.latLng.lng(),
+                time: new Date(),
+        },
+    ])
+    counter += 1
+    
+    } else {
+        alert('Max 5 Markers')
+    };
+
+    
 },[]) ; 
 
 const mapRef = useRef();
@@ -88,7 +117,7 @@ if (!isLoaded) return 'Loading Maps';
 
     return (
         <div>
-             <Nav createMode={true} logOutHandler={props.logOutHandler} />
+             <Nav createMode={true} logOutHandler={props.logOutHandler} createPath={createPath} />
             {
                 props.user ? 
                 (
@@ -182,7 +211,7 @@ const Search = ({panTo}) =>{
     });
 
     return (
-        <div class="search">
+        <div className="search">
         <Combobox onSelect={async(address) => {
             setValue(address, false);
             clearSuggestions()

@@ -11,7 +11,7 @@ const HomeContainer = (props) =>{
         <div>
             <h1> This is the Signed in container </h1>
             
-            <ViewMap user={props.user} />
+            <ViewMap user={props.user}  logOutHandler={props.logOutHandler}/>
             {
                 activePinList ? 
                 (

@@ -182,7 +182,7 @@ const Search = ({panTo}) =>{
     });
 
     return (
-        <div class="search">
+        <div className="search">
         <Combobox onSelect={async(address) => {
             setValue(address, false);
             clearSuggestions()
