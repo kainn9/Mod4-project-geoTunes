@@ -2,6 +2,7 @@ import React, {useState, useCallback, useRef} from 'react';
 import mapStyle from './../../customCss/mapStyle';
 import Nav from '../../components/mainPageComponents/Nav';
 import { UserPlaylists } from 'react-spotify-api'
+import { Dropdown } from 'semantic-ui-react'
 import {
     GoogleMap,
     useLoadScript,
@@ -181,21 +182,37 @@ const CreateMap = (props) => {
                 </InfoWindow>) : null}
             </GoogleMap>
             {console.log(markers)}
-            <div id ='playListContainter'>
-                <ul>
+            <div id ='plContainer'>
                     <UserPlaylists>
-                    
-                            {(playlists, loading, error) =>
-                                playlists.data ? (
-                                playlists.data.items.map(pl => (
-                                    <li key={pl.id}>{pl.name}</li>
-                                        
-                                    ))
-                                ) : null
+                            {
+                            (playlists, loading, error) => {
+                                let plOptions;
+                                if (playlists.data) {
+                                    console.log('plData', playlists.data.items);
+
+                                        plOptions = playlists.data.items.map((pl, i) => {
+                                        return {key: i, flag: 'af', value: pl.name, text: pl.name}
+                                    });
+                                }
+                                
+                                if(plOptions) {
+                                    return(
+                                        <Dropdown options= {plOptions}
+                                            placeholder='Select Playlist'
+                                            fluid
+                                            search
+                                            selection
+                                            
+                                        />
+                                    ) 
+                                } else {
+                                    return <h1>loading</h1>
+                                }
+                            }
+                                
                             }
                         
                     </UserPlaylists>
-                </ul>
             </div>
         </div>
     );
