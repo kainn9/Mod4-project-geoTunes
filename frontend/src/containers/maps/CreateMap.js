@@ -68,6 +68,12 @@ const CreateMap = (props) => {
             },
             body: JSON.stringify(playRouteData)
         })
+        .then()
+        .then( () => {
+            alert('Route Created')
+            props.history.push('/home')
+        })
+    
     }
 
     let counter = 0

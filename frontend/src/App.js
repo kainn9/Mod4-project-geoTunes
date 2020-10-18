@@ -103,8 +103,8 @@ const App = () => {
     } else {
       return (
         <Switch>
-          <Route path='/home' render={() => <HomeContainer  user={user} logOutHandler={logOutHandler}/>}/>
-          <Route  path="/create" render={() => <CreateMap user={user} logOutHandler={logOutHandler}/>}/> 
+          <Route path='/home' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
+          <Route  path="/create" render={() => <CreateMap history={history} user={user} logOutHandler={logOutHandler}/>}/> 
         </Switch> 
       )
     }; 
