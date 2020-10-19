@@ -151,7 +151,7 @@ if (!isLoaded) return 'Loading Maps';
                 onClick={()=>{
                     setSelected(marker);
                     console.log('s',marker)
-                    //props.setPlayer(marker.playlist)
+                    props.setPlayer(marker.playlist)
                     }}
                   />
                 ))}
