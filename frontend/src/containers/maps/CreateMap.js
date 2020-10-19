@@ -58,10 +58,11 @@ const CreateMap = (props) => {
     const createPath = () => {
             let playRouteData = {
                 playRouteData: markers,
-                user: props.user.user
+                user: props.user.user,
+                playlist: selectedPlaylist
             }
             //console.log('userTest', props.user.user)
-
+            console.log(selectedPlaylist)
         fetch('http://localhost:3000/api/v1/play_routes', {
             method: 'POST',
             headers: {
@@ -78,10 +79,10 @@ const CreateMap = (props) => {
     
     }
 
-    let counter = 0
+    
 
     const onMapClick = useCallback((event) => {
-
+        let counter = 0
         if (counter < 5) {
             setMarkers((current)=>[
                 ...current,
@@ -111,8 +112,9 @@ const CreateMap = (props) => {
         mapRef.current.setZoom(14);
     },[]);
 
-    const [markers, setMarkers] = useState([])
-    const [selected, setSelected] = useState(null)
+    const [markers, setMarkers] = useState([]);
+    const [selected, setSelected] = useState(null);
+    const [selectedPlaylist, setSelectedPlaylist] = useState(null);
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: 'AIzaSyDyHRdd4NQOPirfP_EtTiiK7TTHn1ySYZg',
@@ -191,7 +193,7 @@ const CreateMap = (props) => {
                                     console.log('plData', playlists.data.items);
 
                                         plOptions = playlists.data.items.map((pl, i) => {
-                                        return {key: i, flag: 'af', value: pl.name, text: pl.name}
+                                        return {key: i, value: pl.uri, text: pl.name}
                                     });
                                 }
                                 
@@ -202,7 +204,7 @@ const CreateMap = (props) => {
                                             fluid
                                             search
                                             selection
-                                            
+                                            onChange = {(e, data) => setSelectedPlaylist(data.value)}
                                         />
                                     ) 
                                 } else {

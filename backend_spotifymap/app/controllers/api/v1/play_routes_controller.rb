@@ -3,8 +3,8 @@ class Api::V1::PlayRoutesController < ApplicationController
     def create
         playRoute = PlayRoute.create(
             user_id: params[:user][:id],
-            name: 'Testing_Placeholder'
-
+            name: 'Testing_Placeholder',
+            playlist: params[:playlist],
         )
 
         params[:playRouteData].each do |cord|

@@ -55,12 +55,13 @@ const ViewMap = (props) => {
     const prepPinRender = (prd) => {
         console.log('prd', prd)
         return prd.map((pr, i) => {
-            console.log('inMap', pr.pins[0])
+            console.log('inMap', pr)
             return {
                 lat: pr.pins[0].lat, 
                 lng: pr.pins[0].lng, 
                 id: i,
                 subPins: pr.pins,
+                playlist: pr.playlist
             }
         })
     }
@@ -146,17 +147,27 @@ if (!isLoaded) return 'Loading Maps';
                 }}
                 onClick={()=>{
                     setSelected(marker);
+                    console.log('s',marker)
                     }}
                   />
                 ))}
 
                 {selected ? 
-                (<InfoWindow position={{lat: selected.lat, lng: selected.lng }} onCloseClick={()=>{
+                (
+                <InfoWindow 
+                    position={{lat: selected.lat, lng: selected.lng }} 
+                    onCloseClick={()=>{ 
                     setSelected(null);  
-                }}>
+                     }}>
                     <div>
-                            <h2> cords:</h2>
-                            <p>lat: {selected.lat}, lng:{selected.lng} </p>
+                        <h2> 
+                            cords:
+                        </h2>
+                            <p>lat: 
+                                {selected.lat}, lng:{selected.lng} 
+                                <br></br>
+                                URI: {selected.playlist}
+                            </p>
                             
                              subcords: 
                             <ul>
@@ -166,7 +177,6 @@ if (!isLoaded) return 'Loading Maps';
                                         })}
                                     </li> 
                             </ul>
-                            
                     </div>
                 </InfoWindow>) : null}
             </GoogleMap>

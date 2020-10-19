@@ -5,18 +5,18 @@ import ViewMap from './maps/ViewMap'
 import 'react-spotify-auth/dist/index.css'
 
 const HomeContainer = (props) =>{
-    const [activePinList, setActivePinList] = useState('spotify:playlist:07r6MPm5464PGV1A4Yxh3V')
+    const [currentPlaylist, setCurrentPlayList] = useState('')
 
     return(
         <div>
             <h1> This is the Signed in container </h1>
             
-            <ViewMap history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
+            <ViewMap setCurrentPlayList ={setCurrentPlayList} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
             {
-                activePinList ? 
+                currentPlaylist ? 
                 (
                 <GeoPlayer
-                    playlist = {'spotify:playlist:07r6MPm5464PGV1A4Yxh3V'}
+                    playlist = {currentPlaylist}
                  />
                 
                 )
