@@ -81,7 +81,7 @@ const GeoPlayer = (props) => {
                     
                         </PlaylistTracks>
                         </SpotifyApiContext.Provider>
-
+                        {console.log('aboceInego', props.playlist)}
                         <SpotifyPlayer
                             uris={[props.playlist]}
                             name ='geoPlayer'
