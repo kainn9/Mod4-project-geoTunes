@@ -6,10 +6,14 @@ import HomeContainer from './containers/HomeContainer';
 import PreviewContainer from './containers/PreviewContainer';
 import './App.css';
 import CreateMap from './containers/maps/CreateMap';
+import RoutesContainer from './containers/RoutesContainer'
 import {playroutes as playRoutes, users as userRoute, login as loginRoute} from './railsserver'
 
 
 const App = (props) => {
+
+    const [playRouteId, setPlayRoute]= useState(null)
+
     const history = useHistory();
     const [user, setUser] = useState('init');
 
@@ -98,14 +102,20 @@ const App = (props) => {
         <Switch>
           <Route path='/signup' render={() => <SignUp signUpHandler={signUpHandler}/>}/>
           <Route  exact path="/" render={() => <PreviewContainer loginHandler={loginHandler}/>}/> 
+          
+
         </Switch>
       )
 
     } else {
       return (
         <Switch>
-          <Route path='/home' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
+          <Route path='/home' render={() => <HomeContainer setPlayRoute = {setPlayRoute} history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
           <Route  path="/create" render={() => <CreateMap history={history} user={user} logOutHandler={logOutHandler}/>}/> 
+          <Route  path="/routes/:id" render={(routerProps) => {
+              let id = parseInt(routerProps.match.params.id)
+              return <RoutesContainer routerID={id} logOutHandler={logOutHandler} />
+          }}/> 
         </Switch> 
       )
     }; 
@@ -116,3 +126,4 @@ const App = (props) => {
 }
 
 export default App;
+ 

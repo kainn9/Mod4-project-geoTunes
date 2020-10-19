@@ -9,7 +9,7 @@ function MapDirectionsRenderer(props) {
     const [directions, setDirections] = useState(null);
     const [error, setError] = useState(null);
     
-  const didMountRef = useRef()
+ 
   
     useEffect(() => {
       
@@ -20,10 +20,10 @@ function MapDirectionsRenderer(props) {
 
       }));
       
-      console.log(waypoints)
+      
       const origin = waypoints.shift().location;
       const destination = waypoints.pop().location;
-    
+      
       const directionsService = new google.maps.DirectionsService();
       const routeValues=    {
         origin: origin,

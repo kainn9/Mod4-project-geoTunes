@@ -14,8 +14,8 @@ const HomeContainer = (props) =>{
         <div>
             <h1> This is the Signed in container </h1>
             
-            <ViewMap setPlayer ={setPlayer} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
-            {
+            <ViewMap setPlayRoute={props.setPlayRoute} setPlayer ={setPlayer} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
+            {/* {
                 currentPlaylist ? 
                 (
                     <GeoPlayer
@@ -27,7 +27,7 @@ const HomeContainer = (props) =>{
                 (
                     null
                 )
-            }
+            } */}
         </div>
     );
 };

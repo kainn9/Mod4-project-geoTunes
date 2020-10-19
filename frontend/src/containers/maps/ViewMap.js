@@ -16,7 +16,7 @@ import usePlacesAutoComplete, {
     getGeocode,
     getLatLng,
 } from "use-places-autocomplete";
-
+import InfoView from "../InfoView";
 
 import{
     Combobox,
@@ -61,7 +61,7 @@ const ViewMap = (props) => {
             return {
                 lat: pr.pins[0].lat, 
                 lng: pr.pins[0].lng, 
-                id: i,
+                id: pr.id,
                 subPins: pr.pins,
                 playlist: pr.playlist
             }
@@ -72,8 +72,8 @@ const ViewMap = (props) => {
 
         fetch(playRoutes)
         .then(r => r.json() )
-        .then(playRoutes => {
-             let allPins = prepPinRender(playRoutes);
+        .then(playRoutes2 => {
+             let allPins = prepPinRender(playRoutes2);
 
             console.log('pins', allPins)
             setMarkers((current)=>[
@@ -151,7 +151,7 @@ if (!isLoaded) return 'Loading Maps';
                 onClick={()=>{
                     setSelected(marker);
                     //console.log('s',marker)
-                    props.setPlayer(marker.playlist)
+                    //props.setPlayer(marker.playlist)
                     }}
                   />
                 ))}
@@ -165,28 +165,8 @@ if (!isLoaded) return 'Loading Maps';
                     setSelected(null);  
                      }}>
                     <div>
-                        <ShowMap showMarkers={selected.subPins} />
-                        <GeoPlayer
-                            playlist = {selected.playlist}
-                        />
-                
-                        <h2> 
-                            cords:
-                        </h2>
-                            <p>lat: 
-                                {selected.lat}, lng:{selected.lng} 
-                                <br></br>
-                                URI: {selected.playlist}
-                            </p>
-                            
-                             subcords: 
-                            <ul>
-                                   <li>
-                                       {selected.subPins.map((p, i) => {
-                                         return `SubCord ${i}: lat: ${p.lat} lng: ${p.lng} `
-                                        })}
-                                    </li> 
-                            </ul>
+                        {/* <ShowMap routeID={selected.id} setPlayRoute={props.setPlayRoute} playlist={selected.playlist} showMarkers={selected.subPins} /> */}
+                        <InfoView routeID={selected.id} setPlayRoute={props.setPlayRoute} playlist={selected.playlist} showMarkers={selected.subPins} />
                     </div>
                 </InfoWindow>) : null}
             </GoogleMap>
