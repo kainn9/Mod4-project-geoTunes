@@ -11,7 +11,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
    <BrowserRouter>
-      
          <App props = {window} />
    </BrowserRouter>,
   document.getElementById('root')

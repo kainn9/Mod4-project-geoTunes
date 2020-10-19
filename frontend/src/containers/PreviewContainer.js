@@ -1,11 +1,11 @@
 import React from 'react';
 import PreviewMap from './maps/PreviewMap';
-import Login from './LoginContainer'
+import LoginContainer from './LoginContainer';
 
 const PreviewContainer = (props) => {
     return (
         <>
-            <Login loginHandler={props.loginHandler} />
+            <LoginContainer loginHandler={props.loginHandler} />
             <PreviewMap />
         </>
     );
