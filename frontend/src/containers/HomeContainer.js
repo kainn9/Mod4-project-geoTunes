@@ -7,11 +7,14 @@ import 'react-spotify-auth/dist/index.css'
 const HomeContainer = (props) =>{
     const [currentPlaylist, setCurrentPlayList] = useState('')
 
+    const setPlayer = (marker) => {
+        setCurrentPlayList(marker);
+    }
     return(
         <div>
             <h1> This is the Signed in container </h1>
             
-            <ViewMap setCurrentPlayList ={setCurrentPlayList} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
+            <ViewMap setPlayer ={setPlayer} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
             {
                 currentPlaylist ? 
                 (
