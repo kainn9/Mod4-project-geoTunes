@@ -53,9 +53,9 @@ const options  = {
 const ViewMap = (props) => {
 
     const prepPinRender = (prd) => {
-        console.log('prd', prd)
+        //console.log('prd', prd)
         return prd.map((pr, i) => {
-            console.log('inMap', pr)
+            //console.log('inMap', pr)
             return {
                 lat: pr.pins[0].lat, 
                 lng: pr.pins[0].lng, 
@@ -175,7 +175,7 @@ if (!isLoaded) return 'Loading Maps';
                             <ul>
                                    <li>
                                        {selected.subPins.map((p, i) => {
-                                            if (i > 1) return `SubCord ${i}: lat: ${p.lat} lng: ${p.lng} `
+                                         return `SubCord ${i}: lat: ${p.lat} lng: ${p.lng} `
                                         })}
                                     </li> 
                             </ul>

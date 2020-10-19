@@ -66,7 +66,7 @@ const CreateMap = (props) => {
                 playlist: selectedPlaylist
             }
             //console.log('userTest', props.user.user)
-            console.log(selectedPlaylist)
+            //console.log(selectedPlaylist)
         fetch('http://localhost:3000/api/v1/play_routes', {
             method: 'POST',
             headers: {
