@@ -1,5 +1,11 @@
 class Api::V1::PlayRoutesController < ApplicationController
     
+    def show
+        playRoute = PlayRoute.find(params[:id])
+
+        render json: playRoute
+    end
+
     def create
         playRoute = PlayRoute.create(
             user_id: params[:user][:id],
