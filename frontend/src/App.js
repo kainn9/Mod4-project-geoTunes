@@ -6,6 +6,7 @@ import HomeContainer from './containers/HomeContainer';
 import PreviewContainer from './containers/PreviewContainer';
 import './App.css';
 import CreateMap from './containers/maps/CreateMap';
+import {playroutes as playRoutes, users as userRoute, login as loginRoute} from './railsserver'
 
 
 const App = (props) => {
@@ -16,7 +17,7 @@ const App = (props) => {
       const token = localStorage.getItem('token');
 
       if (token) {
-        fetch('http://localhost:3000/api/v1/profile', {
+        fetch(playRoutes, {
           method: 'GET',
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -49,7 +50,7 @@ const App = (props) => {
       };
 
 
-      fetch('http://localhost:3000/api/v1/login', options)
+      fetch(loginRoute, options)
       .then( r => r.json())
       .then(foundUser => {
         setUser(foundUser);
@@ -70,7 +71,7 @@ const App = (props) => {
         };
 
 
-    fetch('http://localhost:3000/api/v1/users', options)
+    fetch(userRoute, options)
     .then( resp => resp.json() )
     .then(newUser => {
 

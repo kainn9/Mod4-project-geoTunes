@@ -31,7 +31,7 @@ import{
 
 import "@reach/combobox/styles.css";
 import '../../customCss/map.css';
-
+import {playroutes as playRoutes, users as userRoute, login as loginRoute} from './railsserver';
 
 
 const libraries = ['places'];
@@ -69,7 +69,7 @@ const ShowMap = (props) => {
             }
             //console.log('userTest', props.user.user)
             //console.log(selectedPlaylist)
-        fetch('http://localhost:3000/api/v1/play_routes', {
+        fetch(playRoutes, {
             method: 'POST',
             headers: {
                 Accepts: 'application/json',

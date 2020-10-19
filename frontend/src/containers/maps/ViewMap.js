@@ -11,7 +11,7 @@ import {
 
 } from '@react-google-maps/api';
 import { formatRelative } from "date-fns";
-
+import {playroutes as playRoutes, users as userRoute, login as loginRoute} from './railsserver';
 import usePlacesAutoComplete, {
     getGeocode,
     getLatLng,
@@ -70,7 +70,7 @@ const ViewMap = (props) => {
 
     useEffect(() => {
 
-        fetch('http://localhost:3000/api/v1/play_routes')
+        fetch(playRoutes)
         .then(r => r.json() )
         .then(playRoutes => {
              let allPins = prepPinRender(playRoutes);
