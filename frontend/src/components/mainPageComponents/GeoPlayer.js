@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
 import { User } from 'react-spotify-api'
 import { PlaylistTracks } from 'react-spotify-api'
+import { SpotifyApiContext } from 'react-spotify-api';
 
 
 const GeoPlayer = (props) => {
@@ -26,7 +27,7 @@ const GeoPlayer = (props) => {
                         ) : null
                     }
                 </User>
-
+                <SpotifyApiContext.Provider value={token}> 
                 <PlaylistTracks id={props.playlist.split(':')[2]}>
                     {(tracks, loading, error) => (
                         tracks.data ? (
@@ -38,6 +39,7 @@ const GeoPlayer = (props) => {
                         null
                     )}
                         </PlaylistTracks>
+                        </SpotifyApiContext.Provider>
 
                         <SpotifyPlayer
                             uris={[props.playlist]}
@@ -54,6 +56,7 @@ const GeoPlayer = (props) => {
                             }}
         
                         />
+                        
                     </>
             )
             :

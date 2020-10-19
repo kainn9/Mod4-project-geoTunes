@@ -8,7 +8,7 @@ import './App.css';
 import CreateMap from './containers/maps/CreateMap';
 
 
-const App = () => {
+const App = (props) => {
     const history = useHistory();
     const [user, setUser] = useState('init');
 

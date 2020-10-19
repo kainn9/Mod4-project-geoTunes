@@ -1,7 +1,8 @@
-import React, {useState, useCallback, useRef} from 'react';
+import React, {useState, useCallback, useRef, useEffect} from 'react';
 import mapStyle from './../../customCss/mapStyle';
 import Nav from '../../components/mainPageComponents/Nav';
 import { UserPlaylists } from 'react-spotify-api'
+import { SpotifyApiContext } from 'react-spotify-api';
 import { Dropdown } from 'semantic-ui-react'
 import {
     GoogleMap,
@@ -51,8 +52,11 @@ const options  = {
 };
 
 
-
 const CreateMap = (props) => {
+    
+    useEffect(() => {
+        setSpotToken(localStorage.getItem('spotifyAuthToken'));
+    }, [])
 
 
     const createPath = () => {
@@ -115,6 +119,7 @@ const CreateMap = (props) => {
     const [markers, setMarkers] = useState([]);
     const [selected, setSelected] = useState(null);
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+    const [spotToken, setSpotToken] = useState(localStorage.getItem('spotifyAuthToken'));
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: 'AIzaSyDyHRdd4NQOPirfP_EtTiiK7TTHn1ySYZg',
@@ -183,14 +188,15 @@ const CreateMap = (props) => {
                     </div>
                 </InfoWindow>) : null}
             </GoogleMap>
-            {console.log(markers)}
+            {/* {console.log(markers)} */}
             <div id ='plContainer'>
-                    <UserPlaylists>
+            <SpotifyApiContext.Provider value={spotToken}> 
+                    <UserPlaylists >
                             {
                             (playlists, loading, error) => {
                                 let plOptions;
                                 if (playlists.data) {
-                                    console.log('plData', playlists.data.items);
+                                    //console.log('plData', playlists.data.items);
 
                                         plOptions = playlists.data.items.map((pl, i) => {
                                         return {key: i, value: pl.uri, text: pl.name}
@@ -215,6 +221,7 @@ const CreateMap = (props) => {
                             }
                         
                     </UserPlaylists>
+                </SpotifyApiContext.Provider> 
             </div>
         </div>
     );
