@@ -4,6 +4,7 @@ import Nav from '../../components/mainPageComponents/Nav';
 import { UserPlaylists } from 'react-spotify-api'
 import { SpotifyApiContext } from 'react-spotify-api';
 import { Dropdown } from 'semantic-ui-react'
+
 import {
     GoogleMap,
     useLoadScript,

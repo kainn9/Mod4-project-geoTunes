@@ -18,7 +18,7 @@ const HomeContainer = (props) =>{
             {
                 currentPlaylist ? 
                 (
-                <GeoPlayer
+                    <GeoPlayer
                     playlist = {currentPlaylist}
                  />
                 

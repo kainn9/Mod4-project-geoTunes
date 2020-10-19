@@ -1,5 +1,5 @@
 import ShowMap from '../maps/ShowMap'
-
+import GeoPlayer from '../../components/mainPageComponents/GeoPlayer'
 import React, {useState, useCallback, useRef, useEffect} from 'react';
 import Nav from '../../components/mainPageComponents/Nav';
 import mapStyle from './../../customCss/mapStyle';
@@ -151,7 +151,7 @@ if (!isLoaded) return 'Loading Maps';
                 onClick={()=>{
                     setSelected(marker);
                     console.log('s',marker)
-                    props.setPlayer(marker.playlist)
+                    //props.setPlayer(marker.playlist)
                     }}
                   />
                 ))}
@@ -166,6 +166,10 @@ if (!isLoaded) return 'Loading Maps';
                      }}>
                     <div>
                         <ShowMap showMarkers={selected.subPins} />
+                        <GeoPlayer
+                            playlist = {selected.playlist}
+                        />
+                
                         <h2> 
                             cords:
                         </h2>
