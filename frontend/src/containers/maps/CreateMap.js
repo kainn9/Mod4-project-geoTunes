@@ -17,6 +17,7 @@ import usePlacesAutoComplete, {
     getGeocode,
     getLatLng,
 } from "use-places-autocomplete";
+import MapsDirectionsRenderer from './MapsDirectionsRenderer';
 
 
 import{
@@ -173,6 +174,9 @@ const CreateMap = (props) => {
                     }}
                   />
                 ))}
+                {/* {markers.length>1 ? console.log("this is markers:", markers): null } */}
+               {markers.length>1? <MapsDirectionsRenderer places={markers}/> : null} 
+               
 
                 {selected ? 
                 (<InfoWindow position={{lat: selected.lat, lng: selected.lng }} onCloseClick={()=>{
