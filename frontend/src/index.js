@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css'
-import App from './App';
-import { SpotifyApiContext } from 'react-spotify-api';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
 
 

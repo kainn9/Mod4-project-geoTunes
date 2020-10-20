@@ -15,19 +15,17 @@ const RoutesContainer = (props) =>{
 
     useEffect(
         ()=>{
-     fetch(playroutes+props.routerID, {
-         method: 'GET',
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-        })
-    .then(res=>res.json())
-    .then(route =>{
-        let cords = prepPinRender(route);
-        setRouteObj(route);
-        setMarkers(cords);
-       
-        
-    })  
-        },[] )
+                fetch(playroutes+props.routerID, {
+                    method: 'GET',
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                })
+                .then(res=>res.json())
+                .then(route =>{
+                    let cords = prepPinRender(route);
+                    setRouteObj(route);
+                    setMarkers(cords);
+                })  
+        },[])
     
  
 

@@ -1,5 +1,5 @@
 import { DirectionsRenderer } from '@react-google-maps/api';
-import React,{useState, useEffect, useRef } from 'react';
+import React,{useState, useEffect } from 'react';
 
 
 /* global google */
@@ -45,7 +45,7 @@ function MapDirectionsRenderer(props) {
           }
         }
       );
-    }, [props.places]);
+    }, [props, directions, props.places]);
   
     if (error) {
       return <h1>{error}</h1>;

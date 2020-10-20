@@ -12,7 +12,6 @@ import {getUser as getUserRoute, users as userRoute, login as loginRoute} from '
 
 const App = (props) => {
 
-    const [playRouteId, setPlayRoute]= useState(null)
 
     const history = useHistory();
     const [user, setUser] = useState('init');
@@ -110,7 +109,7 @@ const App = (props) => {
     } else {
       return (
         <Switch>
-          <Route path='/home' render={() => <HomeContainer setPlayRoute = {setPlayRoute} history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
+          <Route path='/home' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
           <Route  path="/create" render={() => <CreateMap history={history} user={user} logOutHandler={logOutHandler}/>}/> 
           <Route  path="/routes/:id" render={(routerProps) => {
               let id = parseInt(routerProps.match.params.id)

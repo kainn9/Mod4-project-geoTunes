@@ -10,26 +10,23 @@ import {
 
 } from '@react-google-maps/api';
 import { formatRelative } from "date-fns";
-
-import usePlacesAutoComplete, {
-    getGeocode,
-    getLatLng,
-} from "use-places-autocomplete";
 import MapsDirectionsRenderer from './MapsDirectionsRenderer';
-
-
-import{
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption,
-} from "@reach/combobox";
-
 import "@reach/combobox/styles.css";
 import '../../customCss/map.css';
-import {playroutes as playRoutes, users as userRoute, login as loginRoute} from '../../railsserver'
 
+//import { playroutes as playRoutes } from '../../railsserver'
+//import{
+    //     Combobox,
+    //     ComboboxInput,
+    //     ComboboxPopover,
+    //     ComboboxList,
+    //     ComboboxOption,
+    // } from "@reach/combobox";
+
+    // import usePlacesAutoComplete, {
+//     getGeocode,
+//     getLatLng,
+// } from "use-places-autocomplete";
 
 const libraries = ['places'];
 
@@ -57,31 +54,6 @@ const ShowMap = (props) => {
         setMarkers(props.showMarkers)
     }, [props.showMarkers])
 
-    const createPath = () => {
-            let playRouteData = {
-                playRouteData: markers,
-                user: props.user.user,
-                playlist: selectedPlaylist
-            }
-            
-        fetch(playRoutes, {
-            method: 'POST',
-            headers: {
-                Accepts: 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(playRouteData)
-        })
-        .then()
-        .then( () => {
-            alert('Route Created')
-            props.history.push('/home')
-        })
-    
-    }
-
-    
-
     const onMapClick = useCallback((event) => {
         let counter = 0
         if (counter < 5) {
@@ -108,15 +80,13 @@ const ShowMap = (props) => {
         mapRef.current=map; 
     },[])
 
-    const panTo = useCallback(({lat, lng})=> {
-        mapRef.current.panTo({lat, lng});
-        mapRef.current.setZoom(14);
-    },[]);
+    // const panTo = useCallback(({lat, lng})=> {
+    //     mapRef.current.panTo({lat, lng});
+    //     mapRef.current.setZoom(14);
+    // },[]);
 
     const [markers, setMarkers] = useState([]);
     const [selected, setSelected] = useState(null);
-    const [selectedPlaylist, setSelectedPlaylist] = useState(null);
-    
 
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: 'AIzaSyDyHRdd4NQOPirfP_EtTiiK7TTHn1ySYZg',

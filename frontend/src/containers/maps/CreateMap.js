@@ -18,7 +18,7 @@ import usePlacesAutoComplete, {
     getLatLng,
 } from "use-places-autocomplete";
 import MapsDirectionsRenderer from './MapsDirectionsRenderer';
-import {playroutes as playRoutes, users as userRoute, login as loginRoute} from '../../railsserver'
+import { playroutes as playRoutes } from '../../railsserver'
 
 
 import{

@@ -3,7 +3,6 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 import { User, Playlist, PlaylistTracks, Artist } from 'react-spotify-api';
 import { SpotifyApiContext } from 'react-spotify-api';
 import { List, Segment } from 'semantic-ui-react';
-import { ar } from 'date-fns/locale';
 
 
 const GeoPlayer = (props) => {

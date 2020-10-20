@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Checkbox, Form, Segment } from 'semantic-ui-react'
+import { Button, Form, Segment } from 'semantic-ui-react'
 
 import LoginHeader from './LoginHeader';
 
@@ -10,7 +10,6 @@ const LoginForm  = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const token = localStorage.getItem('spotifyAuthToken')
 
     
     

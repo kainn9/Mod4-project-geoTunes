@@ -1,5 +1,4 @@
-import ShowMap from '../maps/ShowMap'
-import GeoPlayer from '../../components/mainPageComponents/GeoPlayer'
+
 import React, {useState, useCallback, useRef, useEffect} from 'react';
 import Nav from '../../components/mainPageComponents/Nav';
 import mapStyle from './../../customCss/mapStyle';
@@ -10,8 +9,7 @@ import {
     InfoWindow,
 
 } from '@react-google-maps/api';
-import { formatRelative } from "date-fns";
-import {playroutes as playRoutes, users as userRoute, login as loginRoute} from '../../railsserver';
+import { playroutes as playRoutes } from '../../railsserver';
 import usePlacesAutoComplete, {
     getGeocode,
     getLatLng,
@@ -78,9 +76,8 @@ const ViewMap = (props) => {
         })
         .then(r => r.json() )
         .then(playRoutes2 => {
-             let allPins = prepPinRender(playRoutes2);
+            let allPins = prepPinRender(playRoutes2);
 
-            console.log('pins', allPins)
             setMarkers((current)=>[
                 ...current,
                 ...allPins
@@ -155,8 +152,7 @@ if (!isLoaded) return 'Loading Maps';
                 }}
                 onClick={()=>{
                     setSelected(marker);
-                    //console.log('s',marker)
-                    //props.setPlayer(marker.playlist)
+                    
                     }}
                   />
                 ))}

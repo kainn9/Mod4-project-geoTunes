@@ -1,55 +1,56 @@
-import React, {useState, useCallback, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom'
-import mapStyle from '../customCss/mapStyle';
 import { SpotifyApiContext, Playlist, PlaylistTracks, Artist } from 'react-spotify-api';
 import { List, Segment, Button } from 'semantic-ui-react';
 import ShowMap from "./maps/ShowMap";
-import {
-    GoogleMap,
-    useLoadScript,
-    Marker,
-    InfoWindow,
-
-} from '@react-google-maps/api';
-import { formatRelative } from "date-fns";
-
-import usePlacesAutoComplete, {
-    getGeocode,
-    getLatLng,
-} from "use-places-autocomplete";
-import MapsDirectionsRenderer from './maps/MapsDirectionsRenderer';
-
-import{
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption,
-} from "@reach/combobox";
-
 import "@reach/combobox/styles.css";
 import '../customCss/map.css';
 
 
+// import {
+//     GoogleMap,
+//     useLoadScript,
+//     Marker,
+//     InfoWindow,
 
-const libraries = ['places'];
+// } from '@react-google-maps/api';
+// import { formatRelative } from "date-fns";
 
-const mapContainerStyle = {
-    width: '100vw',
-    height: '84vh',
-};
+// import usePlacesAutoComplete, {
+//     getGeocode,
+//     getLatLng,
+// } from "use-places-autocomplete";
+// import MapsDirectionsRenderer from './maps/MapsDirectionsRenderer';
 
-const center = {
-    lat: 40.7128,
-    lng: -74.0060,
-};
+// import{
+//     Combobox,
+//     ComboboxInput,
+//     ComboboxPopover,
+//     ComboboxList,
+//     ComboboxOption,
+// } from "@reach/combobox";
 
-const options  = {
-    styles: mapStyle,
-    disableDefaultUI: true,
-    zoomControl: true,
 
-};
+
+
+// const libraries = ['places'];
+
+// const mapContainerStyle = {
+//     width: '100vw',
+//     height: '84vh',
+// };
+
+// const center = {
+//     lat: 40.7128,
+//     lng: -74.0060,
+// };
+
+// const options  = {
+//     styles: mapStyle,
+//     disableDefaultUI: true,
+//     zoomControl: true,
+
+// };
 
 
 
