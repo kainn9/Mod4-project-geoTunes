@@ -52,16 +52,26 @@ const App = (props) => {
         body: JSON.stringify({user: userInfo})
       };
 
-
       fetch(loginRoute, options)
-      .then( r => r.json())
-      .then(foundUser => {
-        setUser(foundUser);
-        localStorage.setItem("token", foundUser.jwt);
-        history.push('/home')
+      .then((r) => {
+        if (r.ok) {
+          return r.json();
+        } else {
+          throw new Error('User Invalid');
+        }
+      })
+      .then((rJson) => {
+            setUser(rJson);
+            localStorage.setItem("token", rJson.jwt);
+            history.push('/home')
+      })
+      .catch((error) => {
+        alert(error)
       });
+
     };
 
+ 
     const signUpHandler = (userObj) =>{
       
       const options ={
@@ -100,7 +110,7 @@ const App = (props) => {
       return (
         <Switch>
           <Route path='/signup' render={() => <SignUp signUpHandler={signUpHandler}/>}/>
-          <Route  exact path="/" render={() => <PreviewContainer loginHandler={loginHandler}/>}/> 
+          <Route exact path="/" render={() => <PreviewContainer loginHandler={loginHandler}/>}/> 
           
 
         </Switch>
