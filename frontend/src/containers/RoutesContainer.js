@@ -2,6 +2,8 @@ import React, {useState, useEffect } from 'react';
 import {playroutes} from "../railsserver"
 import ShowMap from './maps/ShowMap';
 import GeoPlayer from '../components/mainPageComponents/GeoPlayer'
+import useToggle from 'react-use-toggle';
+
 
 const RoutesContainer = (props) =>{
     const prepPinRender = (prd) => {
@@ -10,6 +12,30 @@ const RoutesContainer = (props) =>{
    
     const [routeObj, setRouteObj] = useState([]);
     const [markers, setMarkers] = useState([]);
+    const [newArray, setNewArray]= useState([]);
+
+    const getCords = (array) => {
+        console.log('top', newArray)
+        setNewArray(array)
+        console.log('below', newArray)
+    }
+
+    const patchRequest = () => {
+        
+        let options={
+            method:'PATCH',
+            headers:{
+                'content-type':'application/json',
+                'headers':'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                },
+            body: JSON.stringify({cords: newArray, test: 2})
+        }
+
+        fetch(playroutes + props.routerID, options).then().then()
+        
+    }
+
     
 
     useEffect(
@@ -26,7 +52,7 @@ const RoutesContainer = (props) =>{
                 })  
         },[])
     
- 
+    const [draggableVal, toggle] = useToggle(false);
 
     return (
         <>
@@ -39,9 +65,14 @@ const RoutesContainer = (props) =>{
       return (<RouteShow route={route} />)
   
  */}    
-        <ShowMap showMarkers={markers}/>
+        <ShowMap draggableVal={draggableVal} routesContainer={true} showMarkers={markers} getCords={getCords}/>
 
-        <h2> in Routes Container this is the id: {props.routerID} </h2>
+        <button onClick={toggle}> {draggableVal===true? "Reset": "Update Route"} </button>
+        {draggableVal===true? 
+        <button
+            onClick = { patchRequest }
+        > Save Changes </button> : null }
+        
     { routeObj.playlist !== undefined ? <GeoPlayer playlist = {routeObj.playlist}/> : null}
 
 {/* }} /> */}

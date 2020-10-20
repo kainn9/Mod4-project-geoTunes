@@ -121,12 +121,15 @@ const ShowMap = (props) => {
                 options={options}
                 onClick={onMapClick}
                 onLoad={onMapLoad}
+            
                    
             >
                 {markers.map((marker, i) => (
                     
                 <Marker 
+                draggable={props.draggableVal}
                 key={i} 
+                id={i}
                 position={{lat: marker.lat, lng: marker.lng}}
                 //draggable= {true}
                 icon={{
@@ -136,14 +139,26 @@ const ShowMap = (props) => {
                     anchor: new window.google.maps.Point(15,15),
                    
                 }}
-                onClick={()=>{
-                    setSelected(marker);
+                // onClick={()=>{
+                //     setSelected(marker);
+                //     }}
+
+                    onDragEnd={(e) => {
+                        // console.log(marker.lat);
+                        // console.log(e.latLng.lat());
+                        // console.log(e.latLng.lng());
+                        marker.lat = e.latLng.lat();
+                        marker.lng = e.latLng.lng();
+                        let updatedMarkers = [...markers];
+                        updatedMarkers[marker.id] = marker
+                        setMarkers(updatedMarkers);
+                        
                     }}
                   />
                 ))}
                 {/* {markers.length>1 ? console.log("this is markers:", markers): null } */}
-               {markers.length>1? <MapsDirectionsRenderer 
-                    places={markers}
+               {markers.length>1? <MapsDirectionsRenderer getCords={props.getCords}
+                   places={markers}
                     
                     /> : null} 
             
@@ -163,7 +178,7 @@ const ShowMap = (props) => {
                     </div>
                 </InfoWindow>) : null}
             </GoogleMap>
-            {/* {console.log(markers)} */}
+            {/* {console.log('att the bottom fresh render', markers)} */}
             
         </div>
     );

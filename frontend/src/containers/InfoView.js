@@ -67,7 +67,7 @@ const InfoView = (props) => {
 
     return(
         <div>
-            <ShowMap showMarkers={props.showMarkers}/>
+            <ShowMap getCords={() => null} showMarkers={props.showMarkers}/>
         <div id ='plContainer'>
                 <NavLink to={`/routes/${props.routeID}`} > 
                     <Button primary>

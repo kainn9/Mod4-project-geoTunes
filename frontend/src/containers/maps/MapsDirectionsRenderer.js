@@ -5,13 +5,14 @@ import React,{useState, useEffect } from 'react';
 /* global google */
 
 function MapDirectionsRenderer(props) {
-  console.log(props)
+  
     const [directions, setDirections] = useState(null);
     const [error, setError] = useState(null);
     
-    useEffect( () => {
-      
-    }, [directions])
+    useEffect(()=>{
+       props.getCords(props.places)
+    }, [props.places])
+
   
     useEffect(() => {
       
@@ -57,7 +58,7 @@ function MapDirectionsRenderer(props) {
     return (
       directions && (
         
-        <DirectionsRenderer directions={directions} onDirectionsChanged={() => console.log()} options ={{
+        <DirectionsRenderer directions={directions} getCords={props.getCords} onDirectionsChanged={() => console.log()} options ={{
           draggable: true,
           suppressMarkers: true,
           markerOptions: {

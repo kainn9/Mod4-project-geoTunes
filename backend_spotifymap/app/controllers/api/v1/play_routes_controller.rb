@@ -18,9 +18,27 @@ class Api::V1::PlayRoutesController < ApplicationController
                 play_route_id: playRoute.id,
                 lat: cord[:lat],
                 lng: cord[:lng],
-            ) 
+            )
+        end 
+
+   
+    end
+
+    def update
+        playRoute = PlayRoute.find(params[:id])
+        playRoute.pins.each do |pin|
+            pin.destroy
         end
+
         
+        params[:cords].each do |cord|
+            Pin.create(
+            play_route_id: playRoute.id,
+            lat: cord[:lat],
+            lng: cord[:lng],
+            )
+
+        end
     end
 
     def index

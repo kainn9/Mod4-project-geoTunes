@@ -59,6 +59,7 @@ const CreateMap = (props) => {
     useEffect(() => {
         setSpotToken(localStorage.getItem('spotifyAuthToken'));
     }, [])
+    
 
     const createPath = () => {
             let playRouteData = {
@@ -159,11 +160,12 @@ const CreateMap = (props) => {
                 onLoad={onMapLoad}
                    
             >
-                {markers.map(marker => (
+                {markers.map((marker, i) => (
                     
                 <Marker 
                 draggable={true}
-                key={marker.time.toISOString()} 
+                id={i}
+                key={i} 
                 position={{lat: marker.lat, lng: marker.lng}} 
                 icon={{
                     url:'/Sound-Wave-Headphones.svg', 
@@ -176,8 +178,15 @@ const CreateMap = (props) => {
                     setSelected(marker);
                     }}
                     onDragEnd={(e) => {
-                        e.latLng.lat()
-                        e.latLng.lng()
+                        // console.log(marker.lat);
+                        // console.log(e.latLng.lat());
+                        // console.log(e.latLng.lng());
+                        marker.lat = e.latLng.lat();
+                        marker.lng = e.latLng.lng();
+                        let updatedMarkers = [...markers];
+                        updatedMarkers[marker.id] = marker
+                        setMarkers(updatedMarkers);
+                        
                     }}
                   />
                 ))}
