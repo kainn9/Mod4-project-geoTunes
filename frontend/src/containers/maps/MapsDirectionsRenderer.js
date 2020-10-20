@@ -45,7 +45,7 @@ function MapDirectionsRenderer(props) {
           }
         }
       );
-    }, [props, directions, props.places]);
+    }, [props.places]);
   
     if (error) {
       return <h1>{error}</h1>;
