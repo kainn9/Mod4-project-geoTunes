@@ -14,7 +14,7 @@ function MapDirectionsRenderer(props) {
     useEffect(() => {
       
       const {places} = props;
-      console.log(places)
+    
       const waypoints = places.map(p => ({
         location: { lat: p.lat, lng: p.lng},
 
@@ -37,7 +37,7 @@ function MapDirectionsRenderer(props) {
       directionsService.route( routeValues
      ,
         (result, status) => {
-          console.log(result)
+        
           if (status === google.maps.DirectionsStatus.OK) {
             if(result!==directions) setDirections(result);
           } else {

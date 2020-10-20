@@ -277,7 +277,7 @@ const Search = ({panTo}) =>{
             } catch(err ) {
                 console.log("error!")
             }
-      console.log(address)}}
+        }}
         >
             <ComboboxInput value={value} onChange={(e) => {
                 setValue(e.target.value)

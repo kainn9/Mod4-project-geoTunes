@@ -5,7 +5,6 @@ import GeoPlayer from '../components/mainPageComponents/GeoPlayer'
 
 const RoutesContainer = (props) =>{
     const prepPinRender = (prd) => {
-        console.log('prd', prd)
         return prd.pins.map(pin => ({lat: pin.lat, lng: pin.lng}))
     }
    
@@ -41,8 +40,8 @@ const RoutesContainer = (props) =>{
   
  */}    
         <ShowMap showMarkers={markers}/>
-  {console.log("this is it!", routeObj.playlist)}
-        <h2> in Routes Container this is the id: {props.routerID} {console.log('inShowMAp', markers)} </h2>
+
+        <h2> in Routes Container this is the id: {props.routerID} </h2>
     { routeObj.playlist !== undefined ? <GeoPlayer playlist = {routeObj.playlist}/> : null}
 
 {/* }} /> */}

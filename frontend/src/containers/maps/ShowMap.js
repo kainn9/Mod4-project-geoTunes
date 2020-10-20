@@ -123,10 +123,10 @@ const ShowMap = (props) => {
                 onLoad={onMapLoad}
                    
             >
-                {markers.map(marker => (
+                {markers.map((marker, i) => (
                     
                 <Marker 
-                key={marker.id} 
+                key={i} 
                 position={{lat: marker.lat, lng: marker.lng}} 
                 icon={{
                     url:'/Sound-Wave-Headphones.svg', 

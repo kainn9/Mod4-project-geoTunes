@@ -32,12 +32,12 @@ const GeoPlayer = (props) => {
                 {
                     (tracks) => {
                         if (tracks.data) {
-                           let mappedTracks = tracks.data.items.map(track => (
-                               <List.Content>
+                           let mappedTracks = tracks.data.items.map((track, i) => (
+                               <List.Content key ={i}>
                                     <List.Header key={track.track.id}>
                                         {track.track.name}
                                     </List.Header>
-                                    {console.log(track.track.artists[0].id)}
+                                
                                     <Artist id={track.track.artists[0].id}>
                                         {
                                             artist => {
@@ -80,7 +80,7 @@ const GeoPlayer = (props) => {
                     
                         </PlaylistTracks>
                         </SpotifyApiContext.Provider>
-                        {console.log('aboceInego', props.playlist)}
+                        
                         <SpotifyPlayer
                             uris={[props.playlist]}
                             name ='geoPlayer'
