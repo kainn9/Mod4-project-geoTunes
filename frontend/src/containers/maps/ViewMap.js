@@ -70,9 +70,7 @@ const ViewMap = (props) => {
         //Authorization: `Bearer ${localStorage.getItem('token')}`
         fetch(playRoutes, {
             method: 'GET',
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            },
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
         })
         .then(r => r.json() )
         .then(playRoutes2 => {
