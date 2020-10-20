@@ -6,9 +6,9 @@ import HomeContainer from './containers/HomeContainer';
 import PreviewContainer from './containers/PreviewContainer';
 import './App.css';
 import CreateMap from './containers/maps/CreateMap';
-import RoutesContainer from './containers/RoutesContainer'
-import {getUser as getUserRoute, users as userRoute, login as loginRoute} from './railsserver'
-//testing
+import RoutesContainer from './containers/RoutesContainer';
+import {getUser as getUserRoute, users as userRoute, login as loginRoute} from './railsserver';
+import ProfileContainer from './containers/ProfileContainer';
 
 const App = (props) => {
 
@@ -125,6 +125,12 @@ const App = (props) => {
               let id = parseInt(routerProps.match.params.id)
               return <RoutesContainer routerID={id} logOutHandler={logOutHandler} />
           }}/> 
+
+          <Route path='/profile/:id' render= {(rProps) => {
+            let id = parseInt(rProps.match.params.id)
+
+            return <ProfileContainer userID = {id} user={user} />
+          }} />
         </Switch> 
       )
     }; 

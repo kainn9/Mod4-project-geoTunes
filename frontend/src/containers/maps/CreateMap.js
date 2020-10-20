@@ -134,7 +134,7 @@ const CreateMap = (props) => {
 
     return (
         <div>
-             <Nav createMode={true} logOutHandler={props.logOutHandler} createPath={createPath} />
+             <Nav user={props.user} createMode={true} logOutHandler={props.logOutHandler} createPath={createPath} />
             {
                 props.user ? 
                 (
@@ -162,6 +162,7 @@ const CreateMap = (props) => {
                 {markers.map(marker => (
                     
                 <Marker 
+                draggable={true}
                 key={marker.time.toISOString()} 
                 position={{lat: marker.lat, lng: marker.lng}} 
                 icon={{
@@ -169,10 +170,14 @@ const CreateMap = (props) => {
                     scaledSize: new window.google.maps.Size(30,30), 
                     origin: new window.google.maps.Point(0,0), 
                     anchor: new window.google.maps.Point(15,15),
-                    draggable: true,
+                    //draggable: true,
                 }}
                 onClick={()=>{
                     setSelected(marker);
+                    }}
+                    onDragEnd={(e) => {
+                        e.latLng.lat()
+                        e.latLng.lng()
                     }}
                   />
                 ))}

@@ -8,7 +8,7 @@ const HomeContainer = (props) =>{
 
     return(
         <div>
-            <h1> This is the Signed in container </h1>
+            <h1> Welcome {props.user.user.name} {console.log('currentUserInhomePageData:', props.user)} </h1>
             
             <ViewMap setPlayRoute={props.setPlayRoute} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
 

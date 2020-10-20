@@ -9,7 +9,9 @@ function MapDirectionsRenderer(props) {
     const [directions, setDirections] = useState(null);
     const [error, setError] = useState(null);
     
- 
+    useEffect( () => {
+      
+    }, [directions])
   
     useEffect(() => {
       
@@ -19,6 +21,7 @@ function MapDirectionsRenderer(props) {
         location: { lat: p.lat, lng: p.lng},
 
       }));
+    
       
       
       const origin = waypoints.shift().location;
@@ -29,17 +32,17 @@ function MapDirectionsRenderer(props) {
         origin: origin,
         destination: destination,
         travelMode: google.maps.TravelMode.WALKING,
-        waypoints: waypoints
+        waypoints: waypoints,
       }
         
       
 
-      directionsService.route( routeValues
-     ,
+      directionsService.route( routeValues,
         (result, status) => {
         
           if (status === google.maps.DirectionsStatus.OK) {
             if(result!==directions) setDirections(result);
+            console.log('yaBish')
           } else {
             setError(result);
           }
@@ -54,7 +57,15 @@ function MapDirectionsRenderer(props) {
     return (
       directions && (
         
-        <DirectionsRenderer directions={directions} />
+        <DirectionsRenderer directions={directions} onDirectionsChanged={() => console.log()} options ={{
+          draggable: true,
+          suppressMarkers: true,
+          markerOptions: {
+            label: 'ahhhhhh',
+           
+          }
+
+        }}  />
       
       )
     );

@@ -18,34 +18,41 @@ const Nav = (props) => {
   return(
     <Menu>
       <Menu.Item>
-      {
-      token ? 
-      (
-        <NavLink to='/create'>
-           {!props.createMode ? 
-              <Button>Create Path</Button> 
-              :
-
-              <Button
-                onClick={props.createPath}
-              >Submit Path</Button>
-            }
-        </NavLink>
-      )
-      :
-      (
-        <SpotifyAuthButton header='Register Spotify'/>
-      )
-      }
+        <Button>Home</Button>
       </Menu.Item>
+
       <Menu.Item>
-        <Button>Button 2</Button>
+        {token ? 
+        (
+          <NavLink to='/create'>
+            {!props.createMode ? 
+                <Button>Create Path</Button> 
+                :
+                <Button
+                  onClick={props.createPath}
+                >
+                  Submit Path</Button>
+              }
+          </NavLink>
+        )
+        :
+        (
+          <SpotifyAuthButton header='Register Spotify'/>
+        )}
+      </Menu.Item>
+
+      <Menu.Item>
+        <NavLink to={`/profile/${props.user.user.id}`}>
+          <Button
+            >My Profile
+          </Button>
+        </NavLink>
       </Menu.Item>
 
       <Menu.Item>
         <Button
           onClick = {props.logOutHandler}
-        >Sign out</Button>
+          >Sign out</Button>
       </Menu.Item>
     </Menu>
   )

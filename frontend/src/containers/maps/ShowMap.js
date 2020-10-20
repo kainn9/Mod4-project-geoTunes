@@ -127,13 +127,14 @@ const ShowMap = (props) => {
                     
                 <Marker 
                 key={i} 
-                position={{lat: marker.lat, lng: marker.lng}} 
+                position={{lat: marker.lat, lng: marker.lng}}
+                //draggable= {true}
                 icon={{
                     url:'/Sound-Wave-Headphones.svg', 
                     scaledSize: new window.google.maps.Size(30,30), 
                     origin: new window.google.maps.Point(0,0), 
                     anchor: new window.google.maps.Point(15,15),
-                    draggable: true,
+                   
                 }}
                 onClick={()=>{
                     setSelected(marker);
@@ -141,7 +142,11 @@ const ShowMap = (props) => {
                   />
                 ))}
                 {/* {markers.length>1 ? console.log("this is markers:", markers): null } */}
-               {markers.length>1? <MapsDirectionsRenderer places={markers}/> : null} 
+               {markers.length>1? <MapsDirectionsRenderer 
+                    places={markers}
+                    
+                    /> : null} 
+            
                
 
                 {selected ? 
