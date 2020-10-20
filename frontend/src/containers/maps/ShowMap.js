@@ -1,8 +1,5 @@
 import React, {useState, useCallback, useRef, useEffect} from 'react';
-import { NavLink } from 'react-router-dom'
 import mapStyle from '../../customCss/mapStyle';
-import { SpotifyApiContext, Playlist, PlaylistTracks, Artist } from 'react-spotify-api';
-import { List, Segment, Button } from 'semantic-ui-react';
 
 
 import {
@@ -31,7 +28,7 @@ import{
 
 import "@reach/combobox/styles.css";
 import '../../customCss/map.css';
-import {playroutes as playRoutes, users as userRoute, login as loginRoute} from './railsserver';
+import {playroutes as playRoutes, users as userRoute, login as loginRoute} from '../../railsserver'
 
 
 const libraries = ['places'];

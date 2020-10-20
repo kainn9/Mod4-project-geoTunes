@@ -7,7 +7,7 @@ import PreviewContainer from './containers/PreviewContainer';
 import './App.css';
 import CreateMap from './containers/maps/CreateMap';
 import RoutesContainer from './containers/RoutesContainer'
-import {playroutes as playRoutes, users as userRoute, login as loginRoute} from './railsserver'
+import {getUser as getUserRoute, users as userRoute, login as loginRoute} from './railsserver'
 
 
 const App = (props) => {
@@ -21,7 +21,7 @@ const App = (props) => {
       const token = localStorage.getItem('token');
 
       if (token) {
-        fetch(playRoutes, {
+        fetch(getUserRoute, {
           method: 'GET',
           headers: { Authorization: `Bearer ${token}` },
         })

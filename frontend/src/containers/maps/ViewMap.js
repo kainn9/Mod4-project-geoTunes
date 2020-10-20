@@ -11,7 +11,7 @@ import {
 
 } from '@react-google-maps/api';
 import { formatRelative } from "date-fns";
-import {playroutes as playRoutes, users as userRoute, login as loginRoute} from './railsserver';
+import {playroutes as playRoutes, users as userRoute, login as loginRoute} from '../../railsserver';
 import usePlacesAutoComplete, {
     getGeocode,
     getLatLng,
@@ -69,8 +69,13 @@ const ViewMap = (props) => {
     }
 
     useEffect(() => {
-
-        fetch(playRoutes)
+        //Authorization: `Bearer ${localStorage.getItem('token')}`
+        fetch(playRoutes, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        })
         .then(r => r.json() )
         .then(playRoutes2 => {
              let allPins = prepPinRender(playRoutes2);

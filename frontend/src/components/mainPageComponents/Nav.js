@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import { Button, Menu } from 'semantic-ui-react'
 import SpotifyAuthButton from './SpotifyAuthButton';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 

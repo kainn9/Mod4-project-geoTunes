@@ -18,7 +18,7 @@ import usePlacesAutoComplete, {
     getLatLng,
 } from "use-places-autocomplete";
 import MapsDirectionsRenderer from './MapsDirectionsRenderer';
-import {playroutes as playRoutes, users as userRoute, login as loginRoute} from './railsserver'
+import {playroutes as playRoutes, users as userRoute, login as loginRoute} from '../../railsserver'
 
 
 import{
@@ -66,13 +66,14 @@ const CreateMap = (props) => {
                 user: props.user.user,
                 playlist: selectedPlaylist
             }
-            //console.log('userTest', props.user.user)
-            //console.log(selectedPlaylist)
+            
         fetch(playRoutes, {
             method: 'POST',
             headers: {
+                
                 Accepts: 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(playRouteData)
         })

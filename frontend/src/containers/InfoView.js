@@ -79,11 +79,11 @@ const InfoView = (props) => {
                     (tracks) => {
                         if (tracks.data) {
                            let mappedTracks = tracks.data.items.map(track => (
-                               <List.Content>
+                               <List.Content key={track.track.id}>
                                     <List.Header key={track.track.id}>
                                         {track.track.name}
                                     </List.Header>
-                                    {console.log(track.track.artists[0].id)}
+                        
                                     <Artist id={track.track.artists[0].id}>
                                         {
                                             artist => {

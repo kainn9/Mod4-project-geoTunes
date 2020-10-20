@@ -7,7 +7,8 @@ const users = "http://localhost:3000/api/v1/users/"
 
 
 const login = "http://localhost:3000/api/v1/login/"
+const getUser = "http://localhost:3000/api/v1/profile/"
 
 
 
-export { playroutes, users, login }
+export { playroutes, users, login, getUser }
