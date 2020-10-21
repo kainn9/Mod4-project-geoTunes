@@ -21,7 +21,7 @@ const HomeContainer = (props) =>{
                         <Icon name='globe' />
                         {props.user.user.name}'s Profile 
                         <Header.Subheader id='logoSubHeader'>
-                            click on any route title to preview
+                            click on any pin to preview play route
                         </Header.Subheader>
             </Header>
             <ViewMap setPlayRoute={props.setPlayRoute} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
