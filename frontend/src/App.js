@@ -85,17 +85,27 @@ const App = (props) => {
 
 
     fetch(userRoute, options)
-    .then( resp => resp.json() )
+    .then(resp => resp.json())
     .then(newUser => {
 
-      if (newUser.error) {
-        alert('username taken')
-
-      } else {
+      if(newUser.jwt){
         localStorage.setItem("token", newUser.jwt);
         setUser(newUser)
         history.push('/home')
+      }else {
+        console.log(newUser)
+        let error=newUser
+        let keys= Object.keys(error)
+        let errorMessage= keys.map(
+          (key) => `${key} ${error[key][0]}`)
+          alert(errorMessage)
+          
       }
+      // } else {
+      //   localStorage.setItem("token", newUser.jwt);
+      //   setUser(newUser)
+      //   history.push('/home')
+      // }
       
     });
    
