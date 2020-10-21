@@ -6,7 +6,9 @@ import useToggle from 'react-use-toggle';
 import Nav from '../components/mainPageComponents/Nav';
 import UpdateRouteToggleButton from '../components/mainPageComponents/UpdateRouteToggleButton';
 import SpotifyAuthButton from '../components/mainPageComponents/SpotifyAuthButton';
-import '../customCss/showRoute.css'
+// import '../customCss/showRoute.css'
+import '../customCss/showPage.css'
+
 const RoutesContainer = (props) =>{
     const prepPinRender = (prd) => {
         return prd.pins.map(pin => ({lat: pin.lat, lng: pin.lng}))
@@ -16,11 +18,11 @@ const RoutesContainer = (props) =>{
     const [markers, setMarkers] = useState([]);
     const [newArray, setNewArray]= useState([]);
 
-    // const getCords = (array) => {
-    //     console.log('top', newArray)
-    //     setNewArray(array)
-    //     console.log('below', newArray)
-    // }
+    const getCords = (array) => {
+        console.log('top', newArray)
+        setNewArray(array)
+        console.log('below', newArray)
+    }
 
     const patchRequest = () => {
         
@@ -61,7 +63,8 @@ const RoutesContainer = (props) =>{
         <div id='showPageBody'>
         <Nav user={props.user} logOutHandler={props.logOutHandler} />
         <ShowMap draggableVal={isDragable} routesContainer={true} showMarkers={markers} getCords={setNewArray}/>
-        <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} />
+        <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} /> 
+        <div id="panel"></div>
         
         
         {/* {

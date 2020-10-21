@@ -1,4 +1,4 @@
-import { DirectionsRenderer } from '@react-google-maps/api';
+import { DirectionsRenderer} from '@react-google-maps/api';
 import React,{useState, useEffect } from 'react';
 
 
@@ -43,7 +43,7 @@ function MapDirectionsRenderer(props) {
         
           if (status === google.maps.DirectionsStatus.OK) {
             if(result!==directions) setDirections(result);
-            console.log('yaBish')
+            
           } else {
             setError(result);
           }
@@ -57,8 +57,8 @@ function MapDirectionsRenderer(props) {
     // return null
     return (
       directions && (
-        
-        <DirectionsRenderer directions={directions} getCords={props.getCords} onDirectionsChanged={() => console.log()} options ={{
+        <>
+        <DirectionsRenderer directions={directions} panel={ document.getElementById('panel') } onDirectionsChanged={() => console.log()} options ={{
           draggable: true,
           suppressMarkers: true,
           markerOptions: {
@@ -67,7 +67,8 @@ function MapDirectionsRenderer(props) {
           }
 
         }}  />
-      
+       
+      </>
       )
     );
   }
