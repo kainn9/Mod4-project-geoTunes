@@ -53,7 +53,7 @@ const ProfileContainer = (props) => {
     const [playlistID, setPlaylistID] = useState(null)
     return(
         <>
-            <Nav user={props.user} />
+            <Nav user={props.user} logOutHandler={props.logOutHandler} />
             {
              
                 updatedProfile ? 

@@ -2,6 +2,8 @@
     background-color: #8DAB7F;
     height:90%;
     padding:10px;
+    margin: auto;
+    width: 90vw
 
 }
 
@@ -17,11 +19,11 @@ h1{
 #submitbutton{
     background: whitesmoke;
 }
+ 
 
-
-.ui.form .fields>.field{
+/* .ui.form .fields>.field{
    height:20px;
-}
+} */
 
 body{
     display:flex;
@@ -30,6 +32,8 @@ body{
     width:90%
 }
 
-#root{
-    width:85%;
-}
+/* #root{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+} */

@@ -54,7 +54,7 @@ const SignUp = (props) => {
     }
        
     return (
-        <>
+        <div id='signup'>
             <Header as='h1' id='loginHeader'>
                 <Icon name='globe' id='loginIcon'/>
                 <Header.Content>
@@ -94,7 +94,7 @@ const SignUp = (props) => {
             
             </div>
 
-
+            
 {/*         
             <form onSubmit={gatherState}>
                 <label>UserName</label>
@@ -108,7 +108,7 @@ const SignUp = (props) => {
                 <br></br>
                 <input type='submit'/>
             </form> */}
-        </>
+        </div>
     );
 
 };

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useHistory, Redirect } from "react-router";
+import { useHistory } from "react-router";
 import SignUp from './components/LoginComponents/Signup';
 import HomeContainer from './containers/HomeContainer';
 import PreviewContainer from './containers/PreviewContainer';
-import './App.css';
 import CreateMap from './containers/maps/CreateMap';
 import RoutesContainer from './containers/RoutesContainer';
 import {getUser as getUserRoute, users as userRoute, login as loginRoute} from './railsserver';
@@ -144,7 +143,7 @@ const App = (props) => {
           <Route path='/profile/:id' render= {(rProps) => {
             let id = parseInt(rProps.match.params.id)
 
-            return <ProfileContainer userID = {id} user={user} />
+            return <ProfileContainer userID = {id} user={user} logOutHandler={logOutHandler} />
           }} />
           
         </Switch> 
