@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Header, Icon} from 'semantic-ui-react'
-import '/Users/valnuccio/Development/code/Mod4/new_project/mod4-project/frontend/src/customCss/signUp.css'
+import '../../customCss/signUp.css'
 
 const SignUp = (props) => {
     
