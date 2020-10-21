@@ -3,11 +3,12 @@
     position: relative;
     width: 96%;
     height:45px;
+    display: block;
 
 }
 
 .locate {
-    
+    display: block;
     height:45px;
     width: 52px;
     position: relative;
@@ -15,6 +16,7 @@
     left:98%;
     transform: translateX(-50%);
     z-index:10;
+    text-align: right;
 }
 
 #root > div > div.ui.menu {
