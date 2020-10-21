@@ -53,19 +53,20 @@ const ProfileContainer = (props) => {
     const [playlistID, setPlaylistID] = useState(null)
     return(
         <>
+            <Header id='logoHeader' as='h2' icon>
+                        <Icon name='globe' />
+                        {props.user.user.name}'s Profile 
+                        <Header.Subheader>
+                            click on any route title to preview
+                        </Header.Subheader>
+            </Header>
             <Nav user={props.user} logOutHandler={props.logOutHandler} />
             {
              
                 updatedProfile ? 
                 (
                 <> 
-                    <Header as='h2' icon>
-                        <Icon name='globe' />
-                        {updatedProfile.user.name}'s Profile 
-                        <Header.Subheader>
-                            click on any route title to preview
-                        </Header.Subheader>
-                     </Header>
+                    
                      <Segment inverted>
                         <Header as='h2' icon='map pin' content='My Routes:' />
                     </Segment>
