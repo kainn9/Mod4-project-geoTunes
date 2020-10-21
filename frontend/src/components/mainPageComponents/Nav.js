@@ -16,7 +16,7 @@ const Nav = (props) => {
 
 
   return(
-    <Menu>
+    <Menu id='mainNav'>
       <Menu.Item>
         <NavLink to={'/home'}>
           <Button>Home</Button>

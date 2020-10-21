@@ -3,7 +3,7 @@ import mapStyle from './../../customCss/mapStyle';
 import Nav from '../../components/mainPageComponents/Nav';
 import { UserPlaylists } from 'react-spotify-api'
 import { SpotifyApiContext } from 'react-spotify-api';
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Header, Icon, Input  } from 'semantic-ui-react'
 import {
     GoogleMap,
     useLoadScript,
@@ -37,8 +37,8 @@ import '../../customCss/map.css';
 const libraries = ['places'];
 
 const mapContainerStyle = {
-    width: '100vw',
-    height: '84vh',
+    width: '90vw',
+    height: '80vh',
 };
 
 const center = {
@@ -136,22 +136,18 @@ const CreateMap = (props) => {
 
     return (
         <div>
-             <Nav user={props.user} createMode={true} logOutHandler={props.logOutHandler} createPath={createPath} />
-            {
-                props.user ? 
-                (
-                    <h1 id = 'mapHeader'>
-                        Our App{" "} <span role='img' aria-label='arm'>🦾</span> 
-                    </h1>
-                )
-                :
-                (
-                    null
-                )
-            }
+            <Header id='logoHeader' as='h2' icon>
+                        <Icon name='globe' />
+                        {props.user.user.name}'s Profile 
+                        <Header.Subheader id='logoSubHeader'>
+                            click on any route title to preview
+                        </Header.Subheader>
+            </Header>
             
-            <Search  panTo={panTo} />
-            <Locate panTo={panTo}/> 
+             <Nav user={props.user} createMode={true} logOutHandler={props.logOutHandler} createPath={createPath} />
+            
+            <div id='createMap'>
+                
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
@@ -209,6 +205,9 @@ const CreateMap = (props) => {
                     </div>
                 </InfoWindow>) : null}
             </GoogleMap>
+            </div>
+            <Search  panTo={panTo} />
+            <Locate panTo={panTo}/> 
             {/* {console.log(markers)} */}
             <div id ='plContainer'>
             <SpotifyApiContext.Provider value={spotToken}> 
@@ -226,6 +225,8 @@ const CreateMap = (props) => {
                                 
                                 if(plOptions) {
                                     return(
+                                        <>
+                                        <Header id='headerPL' as='h2' icon='music' content='Add Playlist and Name Route' />
                                         <Dropdown options= {plOptions}
                                             placeholder='Select Playlist'
                                             fluid
@@ -233,6 +234,13 @@ const CreateMap = (props) => {
                                             selection
                                             onChange = {(e, data) => setSelectedPlaylist(data.value)}
                                         />
+                                        <Input
+                                            label={{ icon: 'headphones' }}
+                                            labelPosition='right corner'
+                                            placeholder='Name your Play Route...'
+                                            style={{width: '100%'}}
+                                        />
+                                        </>
                                     ) 
                                 } else {
                                     return <h1>loading</h1>
@@ -242,6 +250,7 @@ const CreateMap = (props) => {
                             }
                         
                     </UserPlaylists>
+                            
                 </SpotifyApiContext.Provider> 
             </div>
         </div>
@@ -308,7 +317,8 @@ const Search = ({panTo}) =>{
                 ))}
                  </ComboboxList>
             </ComboboxPopover>
-        </Combobox>  
+        </Combobox> 
+
         </div>
         
         

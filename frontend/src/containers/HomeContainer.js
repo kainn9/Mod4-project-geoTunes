@@ -2,14 +2,28 @@ import React from 'react';
 
 import ViewMap from './maps/ViewMap'
 import 'react-spotify-auth/dist/index.css'
+import { 
+    Segment, 
+    List ,
+    Header,
+    Icon,
+    Button
+
+} from 'semantic-ui-react'
 
 const HomeContainer = (props) =>{
    
 
     return(
         <div>
-            <h1> Welcome {props.user.user.name} {console.log('currentUserInhomePageData:', props.user)} </h1>
-            
+            {/* <h1> Welcome {props.user.user.name} {console.log('currentUserInhomePageData:', props.user)} </h1> */}
+            <Header id='logoHeader' as='h2' icon>
+                        <Icon name='globe' />
+                        {props.user.user.name}'s Profile 
+                        <Header.Subheader id='logoSubHeader'>
+                            click on any route title to preview
+                        </Header.Subheader>
+            </Header>
             <ViewMap setPlayRoute={props.setPlayRoute} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
 
         </div>

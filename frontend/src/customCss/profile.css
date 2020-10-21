@@ -1,3 +1,23 @@
 #logoHeader {
-    color: whitesmoke
+    color: whitesmoke;
+    text-align: center;
+    
+}
+#logoSubHeader {
+    color: whitesmoke;
+
+}
+
+#headerNav {
+    text-align: center !important;
+}
+
+#mainNav {
+    display: flex;
+    justify-content: center;
+}
+body {
+
+    text-align: center;
+    text-shadow: aqua;
 }

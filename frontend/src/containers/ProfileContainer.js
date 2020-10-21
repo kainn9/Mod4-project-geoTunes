@@ -53,14 +53,16 @@ const ProfileContainer = (props) => {
     const [playlistID, setPlaylistID] = useState(null)
     return(
         <>
+        <div id='headerNav'>
             <Header id='logoHeader' as='h2' icon>
                         <Icon name='globe' />
                         {props.user.user.name}'s Profile 
-                        <Header.Subheader>
+                        <Header.Subheader id='logoSubHeader'>
                             click on any route title to preview
                         </Header.Subheader>
             </Header>
             <Nav user={props.user} logOutHandler={props.logOutHandler} />
+            </div>
             {
              
                 updatedProfile ? 
@@ -79,7 +81,7 @@ const ProfileContainer = (props) => {
                             return(
                                 <div class="ui segment">
                                 <List.Item id={`${r.id}`} onClick={(e) => previewRoute(e.target.id)} key={r.id} >
-                                    <Icon id={`${r.id}`} name='help' />
+                                    <Icon id={`${r.id}`} name='map pin' />
                                     <List.Content>
                                         <List.Header id={`${r.id}`}>{r.name}</List.Header>
                                         <List.Description id={`${r.id}`}>
@@ -106,7 +108,7 @@ const ProfileContainer = (props) => {
                             return(
                                 <div class="ui segment">
                                 <List.Item id={`${r.id}`} onClick={(e) => previewRoute(e.target.id)} key={r.id} >
-                                    <Icon id={`${r.id}`} name='help' />
+                                    <Icon id={`${r.id}`} name='map pin' />
                                     <List.Content>
                                         <List.Header id={`${r.id}`}>{r.name}</List.Header>
                                         <List.Description id={`${r.id}`}>
@@ -180,7 +182,7 @@ const ProfileContainer = (props) => {
                             )
                     
                         } else {
-                            return <h2>Loading</h2>
+                            return <h2>PlayList Will Load Here On Selection</h2>
                         }
                     }
                 }
