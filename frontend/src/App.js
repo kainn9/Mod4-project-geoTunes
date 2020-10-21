@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useHistory } from "react-router";
+import { useHistory, Redirect } from "react-router";
 import SignUp from './components/LoginComponents/Signup';
 import HomeContainer from './containers/HomeContainer';
 import PreviewContainer from './containers/PreviewContainer';
@@ -125,12 +125,18 @@ const App = (props) => {
               let id = parseInt(routerProps.match.params.id)
               return <RoutesContainer user={user} routerID={id} logOutHandler={logOutHandler} />
           }}/> 
+          
+          <Route  path="/routes" render={() => {
 
+            return <RoutesContainer user={user} routerID={localStorage.getItem('currentRoute')} logOutHandler={logOutHandler} />
+           
+          }}/>
           <Route path='/profile/:id' render= {(rProps) => {
             let id = parseInt(rProps.match.params.id)
 
             return <ProfileContainer userID = {id} user={user} />
           }} />
+          
         </Switch> 
       )
     }; 

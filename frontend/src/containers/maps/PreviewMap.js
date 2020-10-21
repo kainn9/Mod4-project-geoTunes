@@ -1,5 +1,6 @@
 import React, {useState, useCallback, useRef} from 'react';
 import mapStyle from '../../customCss/mapStyle';
+//import '../customCss/loginCss.css';
 import {
     GoogleMap,
     useLoadScript,
@@ -24,15 +25,16 @@ import{
 } from "@reach/combobox";
 
 import "@reach/combobox/styles.css";
-import '../../customCss/map.css';
+
 
 
 
 const libraries = ['places'];
 
 const mapContainerStyle = {
-    width: '100vw',
-    height: '84vh',
+    width: '90vw',
+    height: '50vh',
+    
 };
 
 const center = {
@@ -86,7 +88,7 @@ if (loadError) return 'Error Loading Maps';
 if (!isLoaded) return 'Loading Maps';
 
     return (
-        <div>
+        <div id='previewMapContainer'>
             {
                 props.user ? 
                 (

@@ -2,22 +2,42 @@
     font-family: lequire;
     src: url('./fonts/Lequire.otf') format("opentype");
 }
-/* body {
-    background-image: url('../images/world\ map\ IV.png');
-} */
+body {
+    background-color: #394032;
+    width: auto;
+    height: max-height;
+    display: flex;
+    justify-content: center;
+}
 
 #loginSegment {
-
-    background: #2FA0B1;
+    background: #8DAB7F;
+    height:20%;
+    
+   
 }
 
 #loginForm {
-    height: 40vh;
+    height: auto;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    
 
 }
 
+#loginForm > button {
+
+}
+
+div.search > div > input {
+    position: relative;
+    top: 5rem;
+    left:35%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 400px;
+    z-index:10;
+}
 
 
 #loginIcon {
@@ -48,4 +68,20 @@
 
 #registerBtn {
     width: 100%;
+}
+
+#previewContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.locate {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: 3.5rem;
+    left:93%;
+    transform: translateX(-50%);
+    z-index:10;
 }

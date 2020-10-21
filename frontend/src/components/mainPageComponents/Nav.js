@@ -40,7 +40,7 @@ const Nav = (props) => {
         )
         :
         (
-          <SpotifyAuthButton header='Register Spotify'/>
+          <SpotifyAuthButton redirectUri={'http://localhost:3001/home'} header='Register Spotify'/>
         )}
       </Menu.Item>
 

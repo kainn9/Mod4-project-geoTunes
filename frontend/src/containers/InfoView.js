@@ -5,7 +5,7 @@ import { List, Segment, Button } from 'semantic-ui-react';
 import ShowMap from "./maps/ShowMap";
 import "@reach/combobox/styles.css";
 import '../customCss/map.css';
-
+import SpotifyAuthButton from '../components/mainPageComponents/SpotifyAuthButton';
 
 // import {
 //     GoogleMap,
@@ -119,7 +119,9 @@ const InfoView = (props) => {
                             )
                     
                         } else {
-                            return <h2>Loading</h2>
+                            return (
+                                <SpotifyAuthButton header={'Connect Spotify to View Playlists'} redirectUri={`http://localhost:3001/home`}/>
+                                )
                         }
                     }
                 }

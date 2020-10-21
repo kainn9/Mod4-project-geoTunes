@@ -5,7 +5,7 @@ import GeoPlayer from '../components/mainPageComponents/GeoPlayer';
 import useToggle from 'react-use-toggle';
 import Nav from '../components/mainPageComponents/Nav';
 import UpdateRouteToggleButton from '../components/mainPageComponents/UpdateRouteToggleButton';
-
+import SpotifyAuthButton from '../components/mainPageComponents/SpotifyAuthButton';
 
 const RoutesContainer = (props) =>{
     const prepPinRender = (prd) => {
@@ -41,7 +41,8 @@ const RoutesContainer = (props) =>{
     
 
     useEffect(
-        ()=>{
+        ()=> {
+                localStorage.setItem('currentRoute', props.routerID);
                 fetch(playroutes+props.routerID, {
                     method: 'GET',
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -77,7 +78,7 @@ const RoutesContainer = (props) =>{
         )
         }
          */}
-    { routeObj.playlist ? <GeoPlayer playlist = {routeObj.playlist}/> : null}
+    { routeObj.playlist && localStorage.getItem('spotifyAuthToken') ? <GeoPlayer playlist = {routeObj.playlist}/> : <SpotifyAuthButton header="Connect to Spotify to View Playlist" redirectUri={`http://localhost:3001/routes`}/>}
 
 {/* }} /> */}
         </>

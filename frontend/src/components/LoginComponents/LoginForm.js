@@ -66,7 +66,6 @@ const LoginForm  = (props) => {
                         name="password"
                     />
                 </Form.Group>
-                <Form.Checkbox id='termsCheckBox' label='Link My Spotify Account' />
                 <Button class = 'formBtn' type='Login'>Login</Button>
                 <br></br>
                 <Link to='/signUp' type ='button'>
