@@ -37,6 +37,8 @@ const mapContainerStyle = {
     
 };
 
+
+
 const center = {
     lat: 40.7128,
     lng: -74.0060,
@@ -88,23 +90,11 @@ if (loadError) return 'Error Loading Maps';
 if (!isLoaded) return 'Loading Maps';
 
     return (
-        <div id='previewMapContainer'>
-            {
-                props.user ? 
-                (
-                    <h1 id = 'mapHeader'>
-                        Our App{" "} <span role='img' aria-label='arm'>🦾</span> 
-                    </h1>
-                )
-                :
-                (
-                    null
-                )
-            }
+            <>
             
-            <Search  panTo={panTo} />
-            <Locate panTo={panTo}/> 
+            <div id='previewMapContainer'>
             <GoogleMap
+                className='realMap'
                 mapContainerStyle={mapContainerStyle}
                 center={center}
                 zoom={12}
@@ -146,7 +136,11 @@ if (!isLoaded) return 'Loading Maps';
                 </InfoWindow>) : null}
             </GoogleMap>
             {console.log(markers)}
+            
         </div>
+            <Search  panTo={panTo} />
+            <Locate panTo={panTo}/> 
+        </> 
     );
 }
 
@@ -161,7 +155,9 @@ const Locate= ({panTo}) =>{
             });
         }, () => null, options);
     }}>
+         
         <img src="compass.svg" alt="compass - locate me"/>
+       
     </button>
     );
 } 

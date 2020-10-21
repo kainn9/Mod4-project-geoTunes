@@ -25,7 +25,7 @@ import{
 } from "@reach/combobox";
 
 import "@reach/combobox/styles.css";
-import '../../customCss/map.css';
+import '../../customCss/viewMap.css';
 
 
 
@@ -111,23 +111,10 @@ if (loadError) return 'Error Loading Maps';
 if (!isLoaded) return 'Loading Maps';
 
     return (
-        <div>
+        <>
+       
             <Nav createMode={false} logOutHandler={props.logOutHandler} user={props.user}/>
-            {
-                props.user ? 
-                (
-                    <h1 id = 'mapHeader'>
-                        Our App{" "} <span role='img' aria-label='arm'>🦾</span> 
-                    </h1>
-                )
-                :
-                (
-                    null
-                )
-            }
-            
-            <Search  panTo={panTo} />
-            <Locate panTo={panTo}/> 
+            <div id='viewMap'>
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
@@ -169,6 +156,9 @@ if (!isLoaded) return 'Loading Maps';
                 </InfoWindow>) : null}
             </GoogleMap>
         </div>
+         <Search  panTo={panTo} />
+         <Locate panTo={panTo}/> 
+         </>
     );
 }
 

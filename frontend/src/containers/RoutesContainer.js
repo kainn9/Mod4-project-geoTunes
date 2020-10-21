@@ -31,11 +31,11 @@ const RoutesContainer = (props) =>{
                 'headers':'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
-            body: JSON.stringify({cords: newArray, test: 2})
+            body: JSON.stringify({cords: newArray})
         }
 
         fetch(playroutes + props.routerID, options).then().then()
-        
+
     }
 
     

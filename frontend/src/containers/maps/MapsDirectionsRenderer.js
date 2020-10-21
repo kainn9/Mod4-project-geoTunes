@@ -9,9 +9,9 @@ function MapDirectionsRenderer(props) {
     const [directions, setDirections] = useState(null);
     const [error, setError] = useState(null);
     
-    // useEffect(()=>{
-    //    props.getCords(props.places)
-    // }, [props.places])
+    useEffect(()=>{
+       props.getCords(props.places)
+    }, [props.places])
 
   
     useEffect(() => {

@@ -29,7 +29,6 @@ const UpdateRouteToggleButton = (props) => {
 
     const isFavorited = () => {
         let routeIDS = updatedUser.fav_routes.map(r => r.play_route_id)
-        console.log(updatedUser.fav_routes)
         return !routeIDS.includes(props.routeID)
     }
 
@@ -37,7 +36,7 @@ const UpdateRouteToggleButton = (props) => {
     const [favToggle, setFavToggle] = useState(isFavorited());
     
     const isRouteMine = () => {
-        console.log('newUser', updatedUser)
+
         let myRoutes = updatedUser.play_routes.map( p => p.id);
 
         return  myRoutes.includes(props.routeID) ? (true) : (false);

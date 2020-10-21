@@ -25,18 +25,13 @@ body {
 
 }
 
-#loginForm > button {
 
-}
-
-div.search > div > input {
+#root > div.search > div > input {
+    top: 100%;
     position: relative;
-    top: 5rem;
-    left:35%;
-    transform: translateX(-50%);
-    width: auto;
-    max-width: 400px;
-    z-index:10;
+    width: 96%;
+    height:45px;
+
 }
 
 
@@ -76,12 +71,15 @@ div.search > div > input {
     justify-content: center;
 }
 
+
 .locate {
-    height: 30px;
-    width: 30px;
+    
+    height:45px;
+    width: 52px;
     position: relative;
-    top: 3.5rem;
-    left:93%;
+    bottom:3.2rem;
+    left:98%;
     transform: translateX(-50%);
     z-index:10;
 }
+

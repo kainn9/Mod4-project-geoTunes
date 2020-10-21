@@ -166,7 +166,7 @@ const ShowMap = (props) => {
                 {/* {markers.length>1 ? console.log("this is markers:", markers): null } */}
                {markers.length>1? <MapsDirectionsRenderer
                    places={markers}
-                    
+                    getCords ={props.getCords}
                     /> : null} 
             
                
