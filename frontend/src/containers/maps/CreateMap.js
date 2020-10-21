@@ -82,6 +82,7 @@ const CreateMap = (props) => {
         .then( () => {
             alert('Route Created')
             props.history.push('/home')
+            //window.location.reload()
         })
     
     }

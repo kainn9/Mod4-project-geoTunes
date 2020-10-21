@@ -50,9 +50,16 @@ const options  = {
 
 const ShowMap = (props) => {
     
+    
     useEffect(() => {
         setMarkers(props.showMarkers)
     }, [props.showMarkers])
+
+    const [isDraggable, setDrag] = useState(false);
+    useEffect(() => {
+        setDrag(props.draggableVal)
+    }, [props.draggableVal])
+
 
     const onMapClick = useCallback((event) => {
         let counter = 0
@@ -127,7 +134,7 @@ const ShowMap = (props) => {
                 {markers.map((marker, i) => (
                     
                 <Marker 
-                draggable={props.draggableVal}
+                draggable={isDraggable}
                 key={i} 
                 id={i}
                 position={{lat: marker.lat, lng: marker.lng}}

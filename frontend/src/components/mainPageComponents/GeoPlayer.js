@@ -12,6 +12,11 @@ const GeoPlayer = (props) => {
     useEffect(() => setToken(localStorage.getItem('spotifyAuthToken'))
     ,[])
 
+    const [currentPL, setCurrentPL] = useState(props.playlist);
+
+    useEffect(() => setCurrentPL(props.playlist)
+    ,[props.playlist])
+
     return (
             
         token ? 
@@ -82,7 +87,7 @@ const GeoPlayer = (props) => {
                         </SpotifyApiContext.Provider>
                         
                         <SpotifyPlayer
-                            uris={[props.playlist]}
+                            uris={[currentPL]}
                             name ='geoPlayer'
                             token={token}
                             styles={{

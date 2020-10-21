@@ -16,11 +16,11 @@ const RoutesContainer = (props) =>{
     const [markers, setMarkers] = useState([]);
     const [newArray, setNewArray]= useState([]);
 
-    const getCords = (array) => {
-        console.log('top', newArray)
-        setNewArray(array)
-        console.log('below', newArray)
-    }
+    // const getCords = (array) => {
+    //     console.log('top', newArray)
+    //     setNewArray(array)
+    //     console.log('below', newArray)
+    // }
 
     const patchRequest = () => {
         
@@ -54,13 +54,13 @@ const RoutesContainer = (props) =>{
                 })  
         },[])
     
-    const [draggableVal, toggle] = useToggle(false);
+    const [isDragable, toggle] = useToggle(false);
 
     return (
         <>
         <Nav user={props.user} logOutHandler={props.logOutHandler} />
-        <ShowMap draggableVal={draggableVal} routesContainer={true} showMarkers={markers} getCords={getCords}/>
-        <UpdateRouteToggleButton routeID={props.routerID} user={props.user.user} />
+        <ShowMap draggableVal={isDragable} routesContainer={true} showMarkers={markers} getCords={setNewArray}/>
+        <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} />
         
         
         {/* {
@@ -77,7 +77,7 @@ const RoutesContainer = (props) =>{
         )
         }
          */}
-    { routeObj.playlist !== undefined ? <GeoPlayer playlist = {routeObj.playlist}/> : null}
+    { routeObj.playlist ? <GeoPlayer playlist = {routeObj.playlist}/> : null}
 
 {/* }} /> */}
         </>
