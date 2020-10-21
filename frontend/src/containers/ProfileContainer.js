@@ -6,7 +6,7 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 import { User, Playlist, PlaylistTracks, Artist } from 'react-spotify-api';
 import { SpotifyApiContext } from 'react-spotify-api';
 
-
+import '../customCss/profile.css'
 import { getUser, playroutes } from '../railsserver';
 import { 
     Segment, 
@@ -37,6 +37,7 @@ const ProfileContainer = (props) => {
     }, [])
 
     const previewRoute = (id) => {
+    
         setPlaylistID(id)
         fetch(`${playroutes}/${id}`, {
             method: 'GET',
@@ -65,26 +66,61 @@ const ProfileContainer = (props) => {
                             click on any route title to preview
                         </Header.Subheader>
                      </Header>
-                    <h2>My routes: </h2>
+                     <Segment inverted>
+                        <Header as='h2' icon='map pin' content='My Routes:' />
+                    </Segment>
                     {console.log(updatedProfile.user)}
-                    <ul>
+                    <List>
+                    <div class="ui raised segments">
                     {
 
                         updatedProfile.user.play_routes.map( (r, i) => {
-                            return <li id={r.id} onClick={(e) => previewRoute(e.target.id)} key={r.id} >{ r.name }</li>
+                            return(
+                                <div class="ui segment">
+                                <List.Item id={`${r.id}`} onClick={(e) => previewRoute(e.target.id)} key={r.id} >
+                                    <Icon id={`${r.id}`} name='help' />
+                                    <List.Content>
+                                        <List.Header id={`${r.id}`}>{r.name}</List.Header>
+                                        <List.Description id={`${r.id}`}>
+                                            {r.playlist}
+                                        </List.Description>
+                                     </List.Content>
+                                </List.Item>
+                                </div>
+                            ) 
                         })
                     }
-                    </ul>
+                    </div>
+                    </List>
 
-                    <h2>Fav Routes:</h2>
-                    <ul>
+                    <Segment inverted>
+                        <Header as='h2' icon='heartbeat' content='Favorite Routes' />
+                    </Segment>
+               
+                    <List>
+                    <div class="ui raised segments">
                     {
 
                         updatedProfile.user.routes.map( (r, i) => {
-                            return <li id={r.id} onClick={(e) => previewRoute(e.target.id)} key={r.id} >{ r.name }</li>
+                            return(
+                                <div class="ui segment">
+                                <List.Item id={`${r.id}`} onClick={(e) => previewRoute(e.target.id)} key={r.id} >
+                                    <Icon id={`${r.id}`} name='help' />
+                                    <List.Content>
+                                        <List.Header id={`${r.id}`}>{r.name}</List.Header>
+                                        <List.Description id={`${r.id}`}>
+                                            {r.playlist}
+                                        </List.Description>
+                                     </List.Content>
+                                </List.Item>
+                                </div>
+                            
+                            ) 
                         })
                     }
-                    </ul>
+                    </div>
+                    </List>
+         
                     
 
                     <ShowMap showMarkers={markers} getCords={() => null} />
