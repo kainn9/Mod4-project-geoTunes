@@ -64,7 +64,10 @@ const RoutesContainer = (props) =>{
         <Nav user={props.user} logOutHandler={props.logOutHandler} />
         <ShowMap draggableVal={isDragable} routesContainer={true} showMarkers={markers} getCords={setNewArray}/>
         <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} /> 
+        <div id="box">
         <div id="panel"></div>
+        <div id="other info"><h2>yo</h2></div>
+        </div>
         
         
         {/* {
