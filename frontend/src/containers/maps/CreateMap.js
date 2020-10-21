@@ -191,7 +191,7 @@ const CreateMap = (props) => {
                   />
                 ))}
                 {/* {markers.length>1 ? console.log("this is markers:", markers): null } */}
-               {markers.length>1? <MapsDirectionsRenderer places={markers}/> : null} 
+               {markers.length>1? <MapsDirectionsRenderer getCords={() => null} places={markers}/> : null} 
                
 
                 {selected ? 

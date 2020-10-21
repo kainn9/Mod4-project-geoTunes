@@ -18,7 +18,10 @@ const Nav = (props) => {
   return(
     <Menu>
       <Menu.Item>
-        <Button>Home</Button>
+        <NavLink to={'/home'}>
+          <Button>Home</Button>
+        </NavLink>
+        
       </Menu.Item>
 
       <Menu.Item>

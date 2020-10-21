@@ -1,8 +1,10 @@
 import React, {useState, useEffect } from 'react';
-import {playroutes} from "../railsserver"
+import {playroutes} from "../railsserver";
 import ShowMap from './maps/ShowMap';
-import GeoPlayer from '../components/mainPageComponents/GeoPlayer'
+import GeoPlayer from '../components/mainPageComponents/GeoPlayer';
 import useToggle from 'react-use-toggle';
+import Nav from '../components/mainPageComponents/Nav';
+import UpdateRouteToggleButton from '../components/mainPageComponents/UpdateRouteToggleButton';
 
 
 const RoutesContainer = (props) =>{
@@ -56,23 +58,25 @@ const RoutesContainer = (props) =>{
 
     return (
         <>
-    {/* <Route path="/routes/:id" render={(routerProps) => {
-  
-  let id = parseInt(routerProps.match.params.id)
-
-      let route = this.state.api.find(el => el.id === id)
-      console.log(foundDog)
-      return (<RouteShow route={route} />)
-  
- */}    
+        <Nav user={props.user} logOutHandler={props.logOutHandler} />
         <ShowMap draggableVal={draggableVal} routesContainer={true} showMarkers={markers} getCords={getCords}/>
-
-        <button onClick={toggle}> {draggableVal===true? "Reset": "Update Route"} </button>
+        <UpdateRouteToggleButton routeID={props.routerID} user={props.user.user} />
+        
+        
+        {/* {
+            props.user ?
+        (<button onClick={toggle}> {draggableVal===true? "Reset": "Update Route"} </button>
         {draggableVal===true? 
         <button
             onClick = { patchRequest }
         > Save Changes </button> : null }
-        
+        )
+        :
+        (
+            null
+        )
+        }
+         */}
     { routeObj.playlist !== undefined ? <GeoPlayer playlist = {routeObj.playlist}/> : null}
 
 {/* }} /> */}

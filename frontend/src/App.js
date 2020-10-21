@@ -123,7 +123,7 @@ const App = (props) => {
           <Route  path="/create" render={() => <CreateMap history={history} user={user} logOutHandler={logOutHandler}/>}/> 
           <Route  path="/routes/:id" render={(routerProps) => {
               let id = parseInt(routerProps.match.params.id)
-              return <RoutesContainer routerID={id} logOutHandler={logOutHandler} />
+              return <RoutesContainer user={user} routerID={id} logOutHandler={logOutHandler} />
           }}/> 
 
           <Route path='/profile/:id' render= {(rProps) => {
