@@ -32,8 +32,8 @@ import '../../customCss/viewMap.css';
 const libraries = ['places'];
 
 const mapContainerStyle = {
-    width: '100vw',
-    height: '84vh',
+    width: '90vw',
+    height: '80vh',
 };
 
 const center = {

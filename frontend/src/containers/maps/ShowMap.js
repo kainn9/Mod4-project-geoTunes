@@ -30,10 +30,7 @@ import '../../customCss/map.css';
 
 const libraries = ['places'];
 
-const mapContainerStyle = {
-    width: '100vw',
-    height: '84vh',
-};
+
 
 const center = {
     lat: 40.7128,
@@ -49,7 +46,11 @@ const options  = {
 
 
 const ShowMap = (props) => {
-    
+
+    const mapContainerStyle = {
+        width: '90vw',
+        height: props.infoView ? '50vh' : '58vh',
+    };
     
     useEffect(() => {
         setMarkers(props.showMarkers)
@@ -121,6 +122,8 @@ const ShowMap = (props) => {
             }
             
             {/* <Locate panTo={panTo}/>  */}
+            <div id='showMap'>
+
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
@@ -160,10 +163,10 @@ const ShowMap = (props) => {
                         updatedMarkers[marker.id] = marker
                         setMarkers(updatedMarkers);
                         
-                    }}
-                  />
+                    }} 
+                    />
                 ))}
-                {/* {markers.length>1 ? console.log("this is markers:", markers): null } */}
+                {/* {markersdiv.length>1 ? console.log("this is markers:", markers): null } */}
                {markers.length>1? <MapsDirectionsRenderer
                    places={markers}
                     getCords ={props.getCords}
@@ -185,6 +188,7 @@ const ShowMap = (props) => {
                     </div>
                 </InfoWindow>) : null}
             </GoogleMap>
+            </div>
             {/* {console.log('att the bottom fresh render', markers)} */}
             
         </div>

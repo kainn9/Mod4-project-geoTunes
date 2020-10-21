@@ -6,7 +6,7 @@ import useToggle from 'react-use-toggle';
 import Nav from '../components/mainPageComponents/Nav';
 import UpdateRouteToggleButton from '../components/mainPageComponents/UpdateRouteToggleButton';
 import SpotifyAuthButton from '../components/mainPageComponents/SpotifyAuthButton';
-
+import '../customCss/showRoute.css'
 const RoutesContainer = (props) =>{
     const prepPinRender = (prd) => {
         return prd.pins.map(pin => ({lat: pin.lat, lng: pin.lng}))
@@ -58,7 +58,7 @@ const RoutesContainer = (props) =>{
     const [isDragable, toggle] = useToggle(false);
 
     return (
-        <>
+        <div id='showPageBody'>
         <Nav user={props.user} logOutHandler={props.logOutHandler} />
         <ShowMap draggableVal={isDragable} routesContainer={true} showMarkers={markers} getCords={setNewArray}/>
         <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} />
@@ -81,7 +81,7 @@ const RoutesContainer = (props) =>{
     { routeObj.playlist && localStorage.getItem('spotifyAuthToken') ? <GeoPlayer playlist = {routeObj.playlist}/> : <SpotifyAuthButton header="Connect to Spotify to View Playlist" redirectUri={`http://localhost:3001/routes`}/>}
 
 {/* }} /> */}
-        </>
+        </div>
     )
 }
 

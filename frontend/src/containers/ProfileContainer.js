@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
 import ShowMap from './maps/ShowMap';
 import Nav from '../components/mainPageComponents/Nav';
 import SpotifyPlayer from 'react-spotify-web-playback';
 import { User, Playlist, PlaylistTracks, Artist } from 'react-spotify-api';
 import { SpotifyApiContext } from 'react-spotify-api';
 
+
 import { getUser, playroutes } from '../railsserver';
-import { Segment, List } from 'semantic-ui-react'
+import { 
+    Segment, 
+    List ,
+    Header,
+    Icon,
+    Button
+
+} from 'semantic-ui-react'
 
 
 
@@ -28,6 +37,7 @@ const ProfileContainer = (props) => {
     }, [])
 
     const previewRoute = (id) => {
+        setPlaylistID(id)
         fetch(`${playroutes}/${id}`, {
             method: 'GET',
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
@@ -39,17 +49,22 @@ const ProfileContainer = (props) => {
                 setPlaylist(route.playlist);
             })
     }
-
+    const [playlistID, setPlaylistID] = useState(null)
     return(
         <>
-            
             <Nav user={props.user} />
             {
              
                 updatedProfile ? 
                 (
                 <> 
-                    <h1>{updatedProfile.user.name}</h1>
+                    <Header as='h2' icon>
+                        <Icon name='globe' />
+                        {updatedProfile.user.name}'s Profile 
+                        <Header.Subheader>
+                            click on any route title to preview
+                        </Header.Subheader>
+                     </Header>
                     <h2>My routes: </h2>
                     {console.log(updatedProfile.user)}
                     <ul>
@@ -72,12 +87,14 @@ const ProfileContainer = (props) => {
                     </ul>
                     
 
-                    <ShowMap showMarkers={markers} />
+                    <ShowMap showMarkers={markers} getCords={() => null} />
+                    
                     <SpotifyApiContext.Provider value={localStorage.getItem('spotifyAuthToken')}> 
                     <PlaylistTracks id={playlist.split(':')[2]}>
                 {
                     (tracks) => {
                         if (tracks.data) {
+                            
                            let mappedTracks = tracks.data.items.map((track, i) => (
                                <List.Content key ={i}>
                                     <List.Header key={track.track.id}>
@@ -98,6 +115,13 @@ const ProfileContainer = (props) => {
 
 
                             return (
+                                <>
+                                <NavLink to={`/routes/${playlistID}`} > 
+                                    <Button primary>
+                                        Listen to Route
+                                    </Button>
+                                </NavLink>
+
                                 <Segment inverted>
                                     
                                     <Playlist id={playlist.split(':')[2]}>
@@ -115,6 +139,7 @@ const ProfileContainer = (props) => {
                                         </List.Item>
                                     </List>
                                 </Segment>
+                            </>
                             )
                     
                         } else {
