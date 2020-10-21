@@ -35,8 +35,8 @@ const ProfileContainer = (props) => {
         .then(r => r.json())
         .then(route => {
             console.log(route)
-                setMarkers(route.pins)
-                setPlaylist(route.playlist)
+                setMarkers(route.pins);
+                setPlaylist(route.playlist);
             })
     }
 
@@ -100,7 +100,7 @@ const ProfileContainer = (props) => {
                             return (
                                 <Segment inverted>
                                     
-                                    <Playlist id={props.playlist.split(':')[2]}>
+                                    <Playlist id={playlist.split(':')[2]}>
                                         {
                                             playlist => {
                                              return playlist.data ? <h4>Playlist Name: {playlist.data.name}</h4> : null
