@@ -100,7 +100,9 @@ const UpdateRouteToggleButton = (props) => {
                         props.toggle()
                     }}
                 >
-                    <Button color= 'blue'>
+                    <Button
+                    style={{width: '100%'}}
+                     color= 'blue'>
                         <Icon name='edit' />
                         Edit My Route
                     </Button>
@@ -114,6 +116,7 @@ const UpdateRouteToggleButton = (props) => {
             ) 
             : (
                 <Button 
+                    style={{width: '100%'}}
                     as='div' 
                     labelPosition='right'
                     onClick={() => {

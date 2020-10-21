@@ -6,7 +6,7 @@ import useToggle from 'react-use-toggle';
 import Nav from '../components/mainPageComponents/Nav';
 import UpdateRouteToggleButton from '../components/mainPageComponents/UpdateRouteToggleButton';
 import SpotifyAuthButton from '../components/mainPageComponents/SpotifyAuthButton';
-// import '../customCss/showRoute.css'
+import { Dropdown, Header, Icon, Input  } from 'semantic-ui-react'
 import '../customCss/showPage.css'
 
 const RoutesContainer = (props) =>{
@@ -41,7 +41,7 @@ const RoutesContainer = (props) =>{
     }
 
     
-
+    const [routeName, setRouteName] = useState('');
     useEffect(
         ()=> {
                 localStorage.setItem('currentRoute', props.routerID);
@@ -51,9 +51,11 @@ const RoutesContainer = (props) =>{
                 })
                 .then(res=>res.json())
                 .then(route =>{
+                    console.log(route)
                     let cords = prepPinRender(route);
                     setRouteObj(route);
                     setMarkers(cords);
+                    setRouteName(route.name)
                 })  
         },[])
     
@@ -61,6 +63,13 @@ const RoutesContainer = (props) =>{
 
     return (
         <div id='showPageBody'>
+         <Header id='logoHeader' as='h2' icon>
+                        <Icon name='map pin' />
+                        Current Play Route:
+                        <Header.Subheader id='logoSubHeader'>
+                            {routeName}
+                        </Header.Subheader>
+            </Header>
         <Nav user={props.user} logOutHandler={props.logOutHandler} />
         <ShowMap draggableVal={isDragable} routesContainer={true} showMarkers={markers} getCords={setNewArray}/>
         <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} /> 

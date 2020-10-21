@@ -55,17 +55,24 @@ const options  = {
 
 
 const CreateMap = (props) => {
+
     
     useEffect(() => {
         setSpotToken(localStorage.getItem('spotifyAuthToken'));
+        document.addEventListener("keydown", (e) => removePin(e), false);
     }, [])
+
     
+    
+    
+    const [name, setName] = useState('');
 
     const createPath = () => {
             let playRouteData = {
                 playRouteData: markers,
                 user: props.user.user,
-                playlist: selectedPlaylist
+                playlist: selectedPlaylist,
+                plName: name
             }
             
         fetch(playRoutes, {
@@ -87,7 +94,15 @@ const CreateMap = (props) => {
     
     }
 
+    const removePin = ({ code }) => {
+        
+        if (code === 'Escape') {
+            setMarkers(current => current.slice(0, -1))
+        }
+          
+        
     
+    }
 
     const onMapClick = useCallback((event) => {
         let counter = 0
@@ -133,14 +148,14 @@ const CreateMap = (props) => {
 
     if (loadError) return 'Error Loading Maps';
     if (!isLoaded) return 'Loading Maps';
-
+   
     return (
         <div>
             <Header id='logoHeader' as='h2' icon>
                         <Icon name='globe' />
                         {props.user.user.name}'s Profile 
                         <Header.Subheader id='logoSubHeader'>
-                            click on any route title to preview
+                            click and drag Pins, Add a playlist, and name your route
                         </Header.Subheader>
             </Header>
             
@@ -235,6 +250,8 @@ const CreateMap = (props) => {
                                             onChange = {(e, data) => setSelectedPlaylist(data.value)}
                                         />
                                         <Input
+                                            onChange = {(e) => setName(e.target.value)}
+                                            value={name}
                                             label={{ icon: 'headphones' }}
                                             labelPosition='right corner'
                                             placeholder='Name your Play Route...'

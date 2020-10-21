@@ -9,7 +9,7 @@ class Api::V1::PlayRoutesController < ApplicationController
     def create
         playRoute = PlayRoute.create(
             user_id: params[:user][:id],
-            name: 'Testing_Placeholder',
+            name: params[:plName],
             playlist: params[:playlist],
         )
 

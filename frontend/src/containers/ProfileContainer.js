@@ -16,6 +16,7 @@ import {
     Button
 
 } from 'semantic-ui-react'
+import { set } from 'date-fns';
 
 
 
@@ -36,6 +37,8 @@ const ProfileContainer = (props) => {
         })     
     }, [])
 
+    const [playListName , setPL] = useState('')
+
     const previewRoute = (id) => {
     
         setPlaylistID(id)
@@ -48,6 +51,7 @@ const ProfileContainer = (props) => {
             console.log(route)
                 setMarkers(route.pins);
                 setPlaylist(route.playlist);
+                setPL(route.name)
             })
     }
     const [playlistID, setPlaylistID] = useState(null)
@@ -58,7 +62,7 @@ const ProfileContainer = (props) => {
                         <Icon name='globe' />
                         {props.user.user.name}'s Profile 
                         <Header.Subheader id='logoSubHeader'>
-                            click on any route title to preview
+                        click on any route title to preview
                         </Header.Subheader>
             </Header>
             <Nav user={props.user} logOutHandler={props.logOutHandler} />
@@ -125,7 +129,13 @@ const ProfileContainer = (props) => {
                     </List>
          
                     
-
+                    <Header id='logoHeader' as='h4' icon>
+                        <Icon name='itunes' />
+                        Selected Play Route:
+                        <Header.Subheader id='logoSubHeader'>
+                            {playListName}
+                        </Header.Subheader>
+                    </Header>
                     <ShowMap showMarkers={markers} getCords={() => null} />
                     
                     <SpotifyApiContext.Provider value={localStorage.getItem('spotifyAuthToken')}> 
@@ -156,7 +166,9 @@ const ProfileContainer = (props) => {
                             return (
                                 <>
                                 <NavLink to={`/routes/${playlistID}`} > 
-                                    <Button primary>
+                                    <Button 
+                                    style={{width: '100%'}}
+                                    primary>
                                         Listen to Route
                                     </Button>
                                 </NavLink>
