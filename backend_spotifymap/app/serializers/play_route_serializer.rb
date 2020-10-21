@@ -1,3 +1,3 @@
 class PlayRouteSerializer < ActiveModel::Serializer
-  attributes :id, :pins, :user, :playlist
+  attributes :id, :pins, :user, :playlist, :users
 end
