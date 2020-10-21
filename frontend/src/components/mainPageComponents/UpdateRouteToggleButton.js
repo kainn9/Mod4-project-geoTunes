@@ -30,8 +30,9 @@ const UpdateRouteToggleButton = (props) => {
 
     return(
         updatedUser && isRouteMine() ? 
-        (   
-            editSaveToggle ? (
+        (  
+        <> 
+            {editSaveToggle ? (
                 <Button 
                     as='div' 
                     labelPosition='right'
@@ -40,13 +41,13 @@ const UpdateRouteToggleButton = (props) => {
                         props.toggle()
                     }}
                 >
-                    <Button basic color='blue'>
+                    <Button color= 'blue'>
                         <Icon name='edit' />
                         Edit My Route
                     </Button>
                     <Label 
                         as='a' 
-                        basic color='blue' 
+                        color='blue' 
                         pointing='left'>
       
                     </Label>
@@ -62,19 +63,41 @@ const UpdateRouteToggleButton = (props) => {
                         props.patch()
                     }}
                 >
-                    <Button basic color='blue'>
+                    <Button color='green'>
                         <Icon name='edit' />
                         Save my Route
                     </Button>
-                    <Label 
+                        <Label 
                         as='a' 
-                        basic color='blue' 
+                        basic color='green' 
                         pointing='left'>
-      
+                        <Icon name='headphones' />
+                        </Label>
+                    </Button>
+            )}
+            {true ? (
+                <Button as='div' labelPosition='right'>
+                <Button color='red'>
+                    <Icon name='heart' />
+                    Favorite This Route
+                </Button>
+                    <Label as='a' basic color='red' pointing='left'>
+                        500
                     </Label>
                 </Button>
-            )
+            ) : (
+                <Button as='div' labelPosition='right'>
+                <Button color='red'>
+                    <Icon name='heart' />
+                    Unfavorite This Route
+                </Button>
+                    <Label as='a' basic color='red' pointing='left'>
+                        500
+                    </Label>
+                </Button>
+            )}
             
+        </>  
         ) 
         : 
         (
