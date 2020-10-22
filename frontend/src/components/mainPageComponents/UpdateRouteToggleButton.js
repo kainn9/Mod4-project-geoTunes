@@ -150,21 +150,21 @@ const UpdateRouteToggleButton = (props) => {
         (
             favToggle ? (
                 <Button onClick={favRoute} as='div' labelPosition='right'>
-                <Button color='red'>
-                    <Icon name='heart' />
+                <Button id="fave-button" color='red'>
+                    <Icon id="fave-button" name='heart' />
                     Favorite This Route
                 </Button>
-                    <Label as='a' basic color='red' pointing='left'>
+                    <Label as='a' basic color='red' pointing='left' id="fave-button">
                         {updatedRoute && updatedRoute.users ? updatedRoute.users.length : null}
                     </Label>
                 </Button>
             ) : (
                 <Button onClick={unFavRoute} as='div' labelPosition='right'>
-                <Button color='red'>
-                    <Icon name='heart' />
+                <Button id="fave-button" color='red'>
+                    <Icon id="fave-button" name='heart' />
                     Unfavorite This Route
                 </Button>
-                    <Label as='a' basic color='red' pointing='left'>
+                    <Label as='a' basic color='red' pointing='left' id="fave-button">
                     {updatedRoute && updatedRoute.users ? updatedRoute.users.length : null}
                     </Label>
                 </Button>

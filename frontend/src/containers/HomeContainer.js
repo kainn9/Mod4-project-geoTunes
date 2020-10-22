@@ -10,6 +10,7 @@ import {
     Button
 
 } from 'semantic-ui-react'
+import '../../src/customCss/homeCss.css'
 
 const HomeContainer = (props) =>{
    
@@ -19,10 +20,10 @@ const HomeContainer = (props) =>{
             {/* <h1> Welcome {props.user.user.name} {console.log('currentUserInhomePageData:', props.user)} </h1> */}
             <Header id='logoHeader' as='h2' icon>
                         <Icon name='globe' />
-                        {props.user.user.name}'s Profile 
-                        <Header.Subheader id='logoSubHeader'>
+                        {props.user.user.name}'s Homepage
+                        {/* <Header.Subheader id='logoSubHeader'>
                             click on any pin to preview play route
-                        </Header.Subheader>
+                        </Header.Subheader> */}
             </Header>
             <ViewMap setPlayRoute={props.setPlayRoute} history={props.history} user={props.user}  logOutHandler={props.logOutHandler}/>
 
