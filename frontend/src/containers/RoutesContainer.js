@@ -17,7 +17,7 @@ const RoutesContainer = (props) =>{
     const [routeObj, setRouteObj] = useState([]);
     const [markers, setMarkers] = useState([]);
     const [newArray, setNewArray]= useState([]);
-    const [distance, setDistance] = useState('loading')
+    const [distance, setDistance] = useState('')
 
     const getData = (obj) => {
      console.log('getData:', obj)
@@ -78,8 +78,15 @@ const RoutesContainer = (props) =>{
         <div id="box">
             <div id="panel"></div>
             <div id="other_info">
-                <h2>Total Distance:</h2>
-                    <p>{distance}</p>
+
+                <div id="other_info_bit">
+                    <h2>Total Distance:</h2>
+                        <p>{distance}</p>
+                </div>
+                <div id="other_info_bit">
+                    <h2>Time to Walk:</h2>
+                        <p>{distance}</p>
+                </div>
             </div>
         </div>
         

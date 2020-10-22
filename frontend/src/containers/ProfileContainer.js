@@ -136,7 +136,7 @@ const ProfileContainer = (props) => {
                             {playListName}
                         </Header.Subheader>
                     </Header>
-                    <ShowMap showMarkers={markers} getCords={() => null} />
+                    <ShowMap showMarkers={markers} getData={()=>null} getCords={() => null} />
                     
                     <SpotifyApiContext.Provider value={localStorage.getItem('spotifyAuthToken')}> 
                     <PlaylistTracks id={playlist.split(':')[2]}>
