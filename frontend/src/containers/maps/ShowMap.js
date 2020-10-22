@@ -58,16 +58,21 @@ const ShowMap = (props) => {
         setMarkers(props.showMarkers)
     }, [props.showMarkers])
     useEffect( () => {
-        document.addEventListener("keydown", (e) => removePin(e), false);
+        document.addEventListener("keydown", () => removePin(), false);
     }, [])
 
+
     const [isDraggable, setDrag] = useState(false);
+
     useEffect(() => {
         setDrag(props.draggableVal)
+
     }, [props.draggableVal])
 
     const removePin = (e) => {
-        console.log(e)
+        if (document.querySelector('#saveButton')) {
+            setMarkers(current => current.slice(0, -1))
+        }
     }
     const onMapClick = useCallback((event) => {
         let counter = 0

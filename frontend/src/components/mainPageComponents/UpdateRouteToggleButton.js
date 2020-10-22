@@ -116,16 +116,21 @@ const UpdateRouteToggleButton = (props) => {
             ) 
             : (
                 <Button 
-                    style={{width: '100%'}}
                     as='div' 
                     labelPosition='right'
                     onClick={() => {
                         toggleEditSave(current => !current);
                         props.toggle();
                         props.patch()
+                    
                     }}
                 >
-                    <Button color='green'>
+                    <Button 
+                        style={{width: '100%'}}
+                        color='green'
+                        id='saveButton'
+                        >
+                        
                         <Icon name='edit' />
                         Save my Route
                     </Button>
