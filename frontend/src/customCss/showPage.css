@@ -41,6 +41,8 @@ tr{
 #box{
     display:flex;
     flex-direction: row;
+    padding-top:5vh;
+    padding-bottom: 5vh;
     
     
 }
@@ -48,3 +50,9 @@ tr{
 .adp-summary{
     color: #587B7F;
 }
+
+#showPageBody > div.ui.right.labeled.button{
+    margin-top: 5vh;
+}
+
+
