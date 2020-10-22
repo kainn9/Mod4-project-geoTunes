@@ -182,6 +182,7 @@ const ShowMap = (props) => {
                {markers.length>1? <MapsDirectionsRenderer
                    places={markers}
                     getCords ={props.getCords}
+                    getData={props.getData}
                     /> : null} 
             
                

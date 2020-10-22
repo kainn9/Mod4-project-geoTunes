@@ -43,7 +43,7 @@ function MapDirectionsRenderer(props) {
         
           if (status === google.maps.DirectionsStatus.OK) {
             if(result!==directions) setDirections(result);
-            
+            props.getData(result)
           } else {
             setError(result);
           }
