@@ -35,6 +35,12 @@ function MapDirectionsRenderer(props) {
         travelMode: google.maps.TravelMode.WALKING,
         waypoints: waypoints,
       }
+
+      const checkProps = (results) =>{
+        if (props.getData === true){
+          props.getData(results)
+        }
+      }
         
       
 
@@ -43,7 +49,7 @@ function MapDirectionsRenderer(props) {
         
           if (status === google.maps.DirectionsStatus.OK) {
             if(result!==directions) setDirections(result);
-            props.getData(result)
+                checkProps(result)
           } else {
             setError(result);
           }

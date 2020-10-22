@@ -77,7 +77,7 @@ const RoutesContainer = (props) =>{
         <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} /> 
         <div id="box">
             <div id="panel"></div>
-            <div id="other info">
+            <div id="other_info">
                 <h2>Total Distance:</h2>
                     <p>{distance}</p>
             </div>
