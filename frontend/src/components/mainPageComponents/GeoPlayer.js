@@ -22,6 +22,25 @@ const GeoPlayer = (props) => {
         token ? 
         (
             <>
+
+                        <SpotifyPlayer
+                            uris={[currentPL]}
+                            name ='geoPlayer'
+                            token={token}
+                            styles={{
+                                bgColor: '#2FA0B1',
+                                color: '#fff',
+                                loaderColor: '#fff',
+                                sliderColor: '#1cb954',
+                                savedColor: '#fff',
+                                trackArtistColor: '#ccc',
+                                trackNameColor: '#fff',
+                            }}
+        
+                        />
+
+
+
                 <User>
                     {(user, loading, error) =>
                         user.data ? (
@@ -86,21 +105,7 @@ const GeoPlayer = (props) => {
                         </PlaylistTracks>
                         </SpotifyApiContext.Provider>
                         
-                        <SpotifyPlayer
-                            uris={[currentPL]}
-                            name ='geoPlayer'
-                            token={token}
-                            styles={{
-                                bgColor: '#2FA0B1',
-                                color: '#fff',
-                                loaderColor: '#fff',
-                                sliderColor: '#1cb954',
-                                savedColor: '#fff',
-                                trackArtistColor: '#ccc',
-                                trackNameColor: '#fff',
-                            }}
-        
-                        />
+                        
                         
                     </>
             )
