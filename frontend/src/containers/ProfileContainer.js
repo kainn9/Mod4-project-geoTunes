@@ -85,7 +85,7 @@ const ProfileContainer = (props) => {
                             return(
                                 <div class="ui segment">
                                 <List.Item id={`${r.id}`} onClick={(e) => previewRoute(e.target.id)} key={r.id} >
-                                    <Icon id={`${r.id}`} name='map pin' />
+                                    <Icon id={`${r.id}`} name='headphones' />
                                     <List.Content>
                                         <List.Header id={`${r.id}`}>{r.name}</List.Header>
                                         <List.Description id={`${r.id}`}>
@@ -112,7 +112,7 @@ const ProfileContainer = (props) => {
                             return(
                                 <div class="ui segment">
                                 <List.Item id={`${r.id}`} onClick={(e) => previewRoute(e.target.id)} key={r.id} >
-                                    <Icon id={`${r.id}`} name='map pin' />
+                                    <Icon id={`${r.id}`} name='headphones' />
                                     <List.Content>
                                         <List.Header id={`${r.id}`}>{r.name}</List.Header>
                                         <List.Description id={`${r.id}`}>

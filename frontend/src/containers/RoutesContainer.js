@@ -22,6 +22,7 @@ const RoutesContainer = (props) =>{
     const getData = (obj) => {
      console.log('getData:', obj)
      setDistance(obj.routes[0].legs[0].distance.text)
+     console.log(obj.routes[0])
     }
 
 
@@ -85,7 +86,7 @@ const RoutesContainer = (props) =>{
                 </div>
                 <div id="other_info_bit">
                     <h2>Time to Walk:</h2>
-                        <p>{time}</p>
+                        <p>{`${parseFloat(distance) * 20}` }mintues</p>
                 </div>
             </div>
         </div>
