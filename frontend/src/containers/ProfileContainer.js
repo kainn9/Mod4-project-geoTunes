@@ -129,7 +129,7 @@ const ProfileContainer = (props) => {
                     </List>
          
                     
-                    <Header id='logoHeader' as='h4' icon>
+                    <Header id='itunesHeader' as='h4' icon>
                         <Icon name='itunes' />
                         Selected Play Route:
                         <Header.Subheader id='logoSubHeader'>

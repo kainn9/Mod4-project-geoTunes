@@ -148,7 +148,7 @@ const UpdateRouteToggleButton = (props) => {
         ) 
         : 
         (
-            favToggle ? (
+            updatedUser && favToggle ? (
                 <Button onClick={favRoute} as='div' labelPosition='right'>
                 <Button id="fave-button" color='red'>
                     <Icon id="fave-button" name='heart' />

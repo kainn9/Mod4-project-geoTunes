@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Pin.destroy_all
 PlayRoute.destroy_all
+User.destroy_all

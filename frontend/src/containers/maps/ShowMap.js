@@ -32,10 +32,6 @@ const libraries = ['places'];
 
 
 
-const center = {
-    lat: 40.7128,
-    lng: -74.0060,
-};
 
 const options  = {
     styles: mapStyle,
@@ -46,6 +42,16 @@ const options  = {
 
 
 const ShowMap = (props) => {
+    const center = props .infoView ? ({
+        lat: props.showMarkers[0].lat,
+        lng: props.showMarkers[0].lng,
+    })
+    : (
+        {
+            lat: 40.7128,
+            lng: -74.0060,
+        }
+    )
 
     const mapContainerStyle = {
         width: '90vw',
@@ -120,18 +126,7 @@ const ShowMap = (props) => {
     return (
         <div>
 
-            {
-                props.user ? 
-                (
-                    <h1 id = 'mapHeader'>
-                        Our App{" "} <span role='img' aria-label='arm'>🦾</span> 
-                    </h1>
-                )
-                :
-                (
-                    null
-                )
-            }
+            
             
             {/* <Locate panTo={panTo}/>  */}
             <div id='showMap'>
@@ -146,7 +141,7 @@ const ShowMap = (props) => {
             
                    
             >
-                {markers.map((marker, i) => (
+                { markers.map((marker, i) => (
                     
                 <Marker 
                 draggable={isDraggable}

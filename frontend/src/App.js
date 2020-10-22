@@ -119,7 +119,7 @@ const App = (props) => {
       return (
         <Switch>
           <Route path='/signup' render={() => <SignUp signUpHandler={signUpHandler}/>}/>
-          <Route exact path="/" render={() => <PreviewContainer loginHandler={loginHandler}/>}/> 
+          <Route path="/" render={() => <PreviewContainer history={history} loginHandler={loginHandler}/>}/> 
           
 
         </Switch>
@@ -128,6 +128,7 @@ const App = (props) => {
     } else {
       return (
         <Switch>
+          
           <Route path='/home' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
           <Route  path="/create" render={() => <CreateMap history={history} user={user} logOutHandler={logOutHandler}/>}/> 
           <Route  path="/routes/:id" render={(routerProps) => {
@@ -145,7 +146,7 @@ const App = (props) => {
 
             return <ProfileContainer userID = {id} user={user} logOutHandler={logOutHandler} />
           }} />
-          
+          <Route path='/' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
         </Switch> 
       )
     }; 

@@ -64,8 +64,8 @@ const RoutesContainer = (props) =>{
     const [isDragable, toggle] = useToggle(false);
 
     return (
-        <div id='showPageBody'>
-         <Header id='logoHeader' as='h2' icon>
+        <div id='showPageBody' >
+         <Header id='logoHeader' as='h2' icon >
                         <Icon name='map pin' />
                         Current Play Route:
                         <Header.Subheader id='logoSubHeader'>
@@ -75,7 +75,7 @@ const RoutesContainer = (props) =>{
         <Nav user={props.user} logOutHandler={props.logOutHandler} />
         <ShowMap draggableVal={isDragable} getData={getData} routesContainer={true} showMarkers={markers} getCords={setNewArray}/>
         <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} /> 
-        <div id="box">
+        <div id="box" style={{'max-height': '30vh', overflow: 'scroll'}}>
             <div id="panel"></div>
             <div id="other_info">
 
