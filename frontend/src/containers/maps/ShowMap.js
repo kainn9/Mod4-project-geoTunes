@@ -51,17 +51,24 @@ const ShowMap = (props) => {
         width: '90vw',
         height: props.infoView ? '50vh' : '58vh',
     };
+
+    
     
     useEffect(() => {
         setMarkers(props.showMarkers)
     }, [props.showMarkers])
+    useEffect( () => {
+        document.addEventListener("keydown", (e) => removePin(e), false);
+    }, [])
 
     const [isDraggable, setDrag] = useState(false);
     useEffect(() => {
         setDrag(props.draggableVal)
     }, [props.draggableVal])
 
-
+    const removePin = (e) => {
+        console.log(e)
+    }
     const onMapClick = useCallback((event) => {
         let counter = 0
         if (counter < 5) {
@@ -170,6 +177,7 @@ const ShowMap = (props) => {
                {markers.length>1? <MapsDirectionsRenderer
                    places={markers}
                     getCords ={props.getCords}
+                    getData={props.getData}
                     /> : null} 
             
                

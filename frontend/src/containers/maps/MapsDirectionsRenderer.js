@@ -13,6 +13,7 @@ function MapDirectionsRenderer(props) {
        props.getCords(props.places)
     }, [props.places])
 
+
   
     useEffect(() => {
       
@@ -42,12 +43,17 @@ function MapDirectionsRenderer(props) {
         (result, status) => {
         
           if (status === google.maps.DirectionsStatus.OK) {
-            if(result!==directions) setDirections(result);
-            
-          } else {
+            if(result!==directions){
+              setDirections(result);
+              if(props.getData !== null){
+                props.getData(result)
+              }
+          } 
+            else {
             setError(result);
           }
         }
+      }
       );
     }, [props.places]);
   

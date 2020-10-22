@@ -17,12 +17,14 @@ const RoutesContainer = (props) =>{
     const [routeObj, setRouteObj] = useState([]);
     const [markers, setMarkers] = useState([]);
     const [newArray, setNewArray]= useState([]);
+    const [distance, setDistance] = useState('')
 
-    const getCords = (array) => {
-        console.log('top', newArray)
-        setNewArray(array)
-        console.log('below', newArray)
+    const getData = (obj) => {
+     console.log('getData:', obj)
+     setDistance(obj.routes[0].legs[0].distance.text)
     }
+
+
 
     const patchRequest = () => {
         
@@ -71,11 +73,21 @@ const RoutesContainer = (props) =>{
                         </Header.Subheader>
             </Header>
         <Nav user={props.user} logOutHandler={props.logOutHandler} />
-        <ShowMap draggableVal={isDragable} routesContainer={true} showMarkers={markers} getCords={setNewArray}/>
+        <ShowMap draggableVal={isDragable} getData={getData} routesContainer={true} showMarkers={markers} getCords={setNewArray}/>
         <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} /> 
         <div id="box">
-        <div id="panel"></div>
-        <div id="other info"><h2>yo</h2></div>
+            <div id="panel"></div>
+            <div id="other_info">
+
+                <div id="other_info_bit">
+                    <h2>Total Distance:</h2>
+                        <p>{distance}</p>
+                </div>
+                <div id="other_info_bit">
+                    <h2>Time to Walk:</h2>
+                        <p>{distance}</p>
+                </div>
+            </div>
         </div>
         
         
