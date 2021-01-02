@@ -1,5 +1,6 @@
 class Api::V1::PlayRoutesController < ApplicationController
-    
+    skip_before_action :authorized, only: [:index]
+
     def show
         playRoute = PlayRoute.find(params[:id])
 

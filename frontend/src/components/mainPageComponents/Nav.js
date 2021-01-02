@@ -8,41 +8,31 @@ import '../../customCss/navCss.css'
 
 const Nav = (props) => {
 
-  const [token, setToken] = useState(localStorage.getItem('spotifyAuthToken'));
-
-  useEffect(() => {
-    setToken(localStorage.getItem('spotifyAuthToken'))
-  }, [token])
 
 
 
   return(
     <Menu id='mainNav'>
+
       <Menu.Item>
-        <NavLink to={'/home'}>
-          <Button>Home</Button>
-        </NavLink>
+          <NavLink to={'/home'}>
+              <Button>Home</Button>
+          </NavLink>
         
       </Menu.Item>
 
       <Menu.Item>
-        {token ? 
-        (
+        
           <NavLink to='/create'>
             {!props.createMode ? 
                 <Button>Create Path</Button> 
                 :
-                <Button
-                  onClick={props.createPath}
-                >
-                  Submit Path</Button>
-              }
+                <Button onClick={props.createPath}> Submit Path</Button>
+            }
           </NavLink>
-        )
-        :
-        (
-          <SpotifyAuthButton redirectUri={'http://localhost:3001/home'} header='Register Spotify'/>
-        )}
+        
+        
+      
       </Menu.Item>
 
       <Menu.Item>
@@ -54,9 +44,7 @@ const Nav = (props) => {
       </Menu.Item>
 
       <Menu.Item>
-        <Button
-          onClick = {props.logOutHandler}
-          >Sign out</Button>
+        <Button onClick = {props.logOutHandler}> Sign out</Button>
       </Menu.Item>
     </Menu>
   )

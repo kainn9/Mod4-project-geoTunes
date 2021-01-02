@@ -6,7 +6,7 @@ import useToggle from 'react-use-toggle';
 import Nav from '../components/mainPageComponents/Nav';
 import UpdateRouteToggleButton from '../components/mainPageComponents/UpdateRouteToggleButton';
 import SpotifyAuthButton from '../components/mainPageComponents/SpotifyAuthButton';
-import { Dropdown, Header, Icon, Input  } from 'semantic-ui-react'
+import {Header, Icon} from 'semantic-ui-react'
 import '../customCss/showPage.css'
 
 const RoutesContainer = (props) =>{
@@ -86,7 +86,7 @@ const RoutesContainer = (props) =>{
                 </div>
                 <div id="other_info_bit">
                     <h2>Time to Walk:</h2>
-                        <p>{`${parseFloat(distance) * 20}` }mintues</p>
+                        <p>{`${parseFloat(distance) * 20}` } minutes</p>
                 </div>
             </div>
         </div>

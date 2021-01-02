@@ -8,3 +8,10 @@
 Pin.destroy_all
 PlayRoute.destroy_all
 User.destroy_all
+
+
+User.create(username:"RingoS", password: "23", name:"Ringo Starr", location: "Liverpool")
+User.create(username:"Pauly", password: "123", name:"Paul McCartney", location: "Liverpool")
+User.create(username:"JL", password: "123", name:"John Lennon", location: "Liverpool")
+User.create(username:"Georgie", password: "123", name:"George Harrison", location: "Liverpool")
+
