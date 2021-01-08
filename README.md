@@ -14,6 +14,8 @@ Note: Your going to need a spotify api key and a google maps key. Both keys shou
       
       google maps will need the following apis enabled: googleMaps, placesAPi, geoLocationAPI, directionsAPi
       
+      spotify dashboard will need a callBack URL to http://localhost:3000/home
+      
       
 clone the project
 
