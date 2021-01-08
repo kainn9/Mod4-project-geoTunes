@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 import '../../customCss/navCss.css'
 
 
-
 const Nav = (props) => {
 
   const [token, setToken] = useState(localStorage.getItem('spotifyAuthToken'));
@@ -16,39 +15,43 @@ const Nav = (props) => {
 
 
 
-  return(
-    <Menu id='mainNav'>
+  return (
+    <Menu id="mainNav">
       <Menu.Item>
-        <NavLink to={'/home'}>
+        <NavLink to={"/home"}>
           <Button>Home</Button>
         </NavLink>
         
       </Menu.Item>
 
       <Menu.Item>
-        {token ? 
-        (
-          <NavLink to='/create'>
-            {!props.createMode ? 
-                <Button>Create Path</Button> 
-                :
-                <Button
-                  onClick={props.createPath}
-                >
-                  Submit Path</Button>
-              }
+
+        {token ? (
+          <NavLink to="/create">
+
+            {!props.createMode ? (
+              <Button>Create Path</Button> 
+
+            ) : (
+
+              <Button onClick={props.createPath} >
+                Submit Path
+              </Button>
+
+            )}
           </NavLink>
-        )
-        :
-        (
-          <SpotifyAuthButton redirectUri={'http://localhost:3001/home'} header='Register Spotify'/>
+        ) : (
+
+          <SpotifyAuthButton redirectUri={'http://localhost:3000/home'} header='Register Spotify'/>
+
         )}
+
       </Menu.Item>
 
       <Menu.Item>
         <NavLink to={`/profile/${props.user.user.id}`}>
-          <Button
-            >My Profile
+          <Button>
+            My Profile
           </Button>
         </NavLink>
       </Menu.Item>

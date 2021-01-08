@@ -27,8 +27,6 @@ import{
 import "@reach/combobox/styles.css";
 
 
-
-
 const libraries = ['places'];
 
 const mapContainerStyle = {
@@ -81,7 +79,7 @@ const [markers, setMarkers] = useState([])
 const [selected, setSelected] = useState(null)
 
 const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDyHRdd4NQOPirfP_EtTiiK7TTHn1ySYZg',
+    googleMapsApiKey: process.env.REACT_APP_GMK,
     libraries
 });
 
@@ -180,6 +178,7 @@ const Search = ({panTo}) =>{
 
     return (
         <div class="search">
+    
         <Combobox onSelect={async(address) => {
             setValue(address, false);
             clearSuggestions()
