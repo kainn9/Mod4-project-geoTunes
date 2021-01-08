@@ -74,12 +74,12 @@ const SignUp = (props) => {
 
                             <Form.Field>
                                 <label>Password</label>
-                                <Input fluid value={password} onChange={updateState} name='password'/>
+                                <Input type="password" fluid value={password} onChange={updateState} name='password'/>
                             </Form.Field>
                             
                             <Form.Field>
                                 <label>Confirm Password</label>
-                                <Input fluid value={confirmation} onChange={updateState} name='confirmation'/>
+                                <Input type="password" fluid value={confirmation} onChange={updateState} name='confirmation'/>
                             </Form.Field>
 
                             <Form.Field>
