@@ -4,7 +4,7 @@
 [Video Demo](https://www.loom.com/share/0b41eeabdbd84459a0bfe0c43a16348e?sharedAppSource=personal_library)
 
 ## Brief Summary: 
-GeoTunes was a collaboration project with https://github.com/valnuccio after our 4th Module(react) at the flatiron bootcamp. We had one week to try put our new react skills to work! Our goal was to build a webApp that would enable users to attach thier Spotify playlists to a route on a shared google map. Users can preview each others routes/playlists and also listen to them/ get walking directions. Users may also favorite routes for easy access and edit their own routes.
+GeoTunes was a collaboration project with Val(https://github.com/valnuccio) after our 4th Module(react) at the flatiron bootcamp. We had one week to try put our new react skills to work! Our goal was to build a webApp that would enable users to attach thier Spotify playlists to a route on a shared google map. Users can preview each others routes/playlists and also listen to them/ get walking directions. Users may also favorite routes for easy access and edit their own routes.
 
 ## Installation:
 * First, clone the project directory
