@@ -1,101 +1,93 @@
 import React, { useState } from 'react';
-import { Form, Input, Header, Icon} from 'semantic-ui-react'
-import '../../customCss/signUp.css'
+import {
+  Form, Input, Header, Icon,
+} from 'semantic-ui-react';
+import '../../customCss/signUp.css';
 
 const SignUp = (props) => {
-    
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmation, setConfirmation] = useState('');
-    const [name, setName] = useState('');
-    
-    
-    const updateState = (e) =>{
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmation, setConfirmation] = useState('');
+  const [name, setName] = useState('');
 
-        switch(e.target.name) {
-            case "username":
-                setUsername(e.target.value);
-                break;
-            case 'password':
-                setPassword(e.target.value);
-                break;
-            case 'confirmation':
-                setConfirmation(e.target.value);
-                break;
-            case 'name':
-                setName(e.target.value);
-                break;
-            default:
-                break
-        } 
+  const updateState = (e) => {
+    switch (e.target.name) {
+      case 'username':
+        setUsername(e.target.value);
+        break;
+      case 'password':
+        setPassword(e.target.value);
+        break;
+      case 'confirmation':
+        setConfirmation(e.target.value);
+        break;
+      case 'name':
+        setName(e.target.value);
+        break;
+      default:
+        break;
     }
-  
+  };
 
-    const gatherState = (e) =>{
-        e.preventDefault();
-        
-        if( password === confirmation) { 
-              
-            props.signUpHandler({
-                username: username,
-                password: password, 
-                name: name
-            });
+  const gatherState = (e) => {
+    e.preventDefault();
 
-            setUsername('');
-            setPassword('');
-            setConfirmation('');
-            setName('');
+    if (password === confirmation) {
+      props.signUpHandler({
+        username,
+        password,
+        name,
+      });
 
-        } else {
-            alert('passwords dont match');
-        }
-
+      setUsername('');
+      setPassword('');
+      setConfirmation('');
+      setName('');
+    } else {
+      alert('passwords dont match');
     }
-       
-    return (
-        <div id='signup'>
-            <Header as='h1' id='loginHeader'>
-                <Icon name='globe' id='loginIcon'/>
-                <Header.Content>
-                    
-                    <h1>GEOTUNES</h1>
-                </Header.Content>
-            </Header>
-             <div id="sign_up_form">
-            
-               
-                    <Form onSubmit={gatherState}>
-                        
-                            <Form.Field >
-                                <label>Username</label>
-                                <Input fluid value={username} onChange={updateState} name='username'/>
-                            </Form.Field>
+  };
 
-                            <Form.Field>
-                                <label>Password</label>
-                                <Input type="password" fluid value={password} onChange={updateState} name='password'/>
-                            </Form.Field>
-                            
-                            <Form.Field>
-                                <label>Confirm Password</label>
-                                <Input type="password" fluid value={confirmation} onChange={updateState} name='confirmation'/>
-                            </Form.Field>
+  return (
+    <div id="signup">
+      <Header as="h1" id="loginHeader">
+        <Icon name="globe" id="loginIcon" />
+        <Header.Content>
 
-                            <Form.Field>
-                                <label>Name</label>
-                                <Input fluid value={name} onChange={updateState} name='name'/>
-                            </Form.Field>
+          <h1>GEOTUNES</h1>
+        </Header.Content>
+      </Header>
+      <div id="sign_up_form">
 
-                            <Form.Button content='Submit' id="submitbutton"/>
-                        
-                    </Form>
-                
-            
-            </div>
+        <Form onSubmit={gatherState}>
 
-            
-{/*         
+          <Form.Field>
+            <label>Username</label>
+            <Input fluid value={username} onChange={updateState} name="username" />
+          </Form.Field>
+
+          <Form.Field>
+            <label>Password</label>
+            <Input type="password" fluid value={password} onChange={updateState} name="password" />
+          </Form.Field>
+
+          <Form.Field>
+            <label>Confirm Password</label>
+            <Input type="password" fluid value={confirmation} onChange={updateState} name="confirmation" />
+          </Form.Field>
+
+          <Form.Field>
+            <label>Name</label>
+            <Input fluid value={name} onChange={updateState} name="name" />
+          </Form.Field>
+
+          <Form.Button content="Submit" id="submitbutton" />
+
+        </Form>
+
+      </div>
+
+      {/*
             <form onSubmit={gatherState}>
                 <label>UserName</label>
                 <input type='text' value={username} onChange={updateState} name='username'/>
@@ -108,13 +100,11 @@ const SignUp = (props) => {
                 <br></br>
                 <input type='submit'/>
             </form> */}
-        </div>
-    );
-
+    </div>
+  );
 };
 
 export default SignUp;
-
 
 // <Form onSubmit={gatherState}>
 // <Form.Group widths='equal'>
