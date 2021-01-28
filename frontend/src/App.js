@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useHistory } from "react-router";
-import SignUp from './components/LoginComponents/Signup';
+
+
+import {GlobalStyle} from '../src/theme/globalstyle';
+
+
 import HomeContainer from './containers/HomeContainer';
 import PreviewContainer from './containers/PreviewContainer';
-import CreateMap from './containers/maps/CreateMap';
+import Test from './containers/maps/Test';
 import RoutesContainer from './containers/RoutesContainer';
-import {getUser as getUserRoute, users as userRoute, login as loginRoute} from './railsserver';
 import ProfileContainer from './containers/ProfileContainer';
+
+
+import {getUser as getUserRoute, users as userRoute, login as loginRoute} from './railsserver';
+
 
 const App = (props) => {
 
@@ -89,10 +96,10 @@ const App = (props) => {
 
       if(newUserInfo.jwt){
         localStorage.setItem("token", newUserInfo.jwt);
-        setUser(newUser)
+        setUser(newUserInfo)
         history.push('/home')
       }else {
-        let error=newUser
+        let error=newUserInfo
         let keys= Object.keys(error)
         let errorMessage= keys.map(
           (key) => `${key} ${error[key][0]}`)
@@ -103,46 +110,58 @@ const App = (props) => {
    
   };
 
-  const render = () => {
 
+
+  const render = () => {
+    
     if(user === 'init') {
       return <h2> </h2>
 
     } else if(!user) {
       return (
-        <Switch>
-          <Route path='/signup' render={() => <SignUp signUpHandler={signUpHandler}/>}/>
-          <Route path="/" render={() => <PreviewContainer history={history} loginHandler={loginHandler}/>}/> 
-          
+       
+         <>
+         <GlobalStyle/>
+            <Switch>
+              
+              <Route path='/signup' render={() => <PreviewContainer fromPreview={false} signUpHandler={signUpHandler} history={history} loginHandler={loginHandler}/>}/>
+              <Route path="/" render={() => <PreviewContainer fromPreview={true} signUpHandler={signUpHandler} history={history} loginHandler={loginHandler}/>}/> 
+              
 
-        </Switch>
+            </Switch>
+        </>
+        
       )
 
     } else {
       return (
-        <Switch>
-          
-          <Route path='/home' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
-          <Route  path="/create" render={() => <CreateMap history={history} user={user} logOutHandler={logOutHandler}/>}/> 
-          <Route  path="/routes/:id" render={(routerProps) => {
-              let id = parseInt(routerProps.match.params.id)
-              return <RoutesContainer user={user} routerID={id} logOutHandler={logOutHandler} />
-          }}/> 
-          
-          <Route  path="/routes" render={() => {
+        <>
+          <GlobalStyle/>
+            <Switch>
+              
+              <Route path='/home' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
+              <Route  path="/create" render={() => <Test history={history} user={user} logOutHandler={logOutHandler}/>}/>  
+              <Route  path="/routes/:id" render={(routerProps) => {
+                  let id = parseInt(routerProps.match.params.id)
+                  return <RoutesContainer user={user} routerID={id} logOutHandler={logOutHandler} />
+              }}/> 
+              
+              <Route  path="/routes" render={() => {
 
-            return <RoutesContainer user={user} routerID={localStorage.getItem('currentRoute')} logOutHandler={logOutHandler} />
-           
-          }}/>
-          <Route path='/profile/:id' render= {(rProps) => {
-            let id = parseInt(rProps.match.params.id)
+                return <RoutesContainer user={user} routerID={localStorage.getItem('currentRoute')} logOutHandler={logOutHandler} />
+              
+              }}/>
+              <Route path='/profile/:id' render= {(rProps) => {
+                let id = parseInt(rProps.match.params.id)
 
-            return <ProfileContainer userID = {id} user={user} logOutHandler={logOutHandler} />
-          }} />
-          <Route path='/' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
-        </Switch> 
+                return <ProfileContainer userID = {id} user={user} logOutHandler={logOutHandler} />
+              }} />
+              <Route path='/' render={() => <HomeContainer history = {history}  user={user} logOutHandler={logOutHandler}/>}/>
+            </Switch> 
+       </>
       )
     }; 
+   
   };
 
 

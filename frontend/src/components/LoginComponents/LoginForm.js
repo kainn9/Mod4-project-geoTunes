@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Form, Segment } from 'semantic-ui-react'
 
-import LoginHeader from './LoginHeader';
+import { Button, Form} from 'semantic-ui-react'
+
+
 
 
 
 const LoginForm  = (props) => {
+
+
+
+
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -44,21 +49,21 @@ const LoginForm  = (props) => {
 
     
     return(
+        <>
         
-        <Segment inverted id='loginSegment'>
 
-            <Form inverted id = 'loginForm' onSubmit={handleUserInfo}>
+            <Form  onSubmit={handleUserInfo}>
 
-                <LoginHeader />
+                
 
-                    <Form.Group widths='equal'>
+                    <Form.Group widths='equal' style={{display:"flex", flexDirection:'column'} }>
                     
                         <Form.Input 
                             className='formText' 
                             type='text' 
                             fluid 
                             label='Username' 
-                            placeholder='username' 
+                            placeholder='Username' 
                             value={username} 
                             onChange={updateState} 
                             name="username"
@@ -66,33 +71,45 @@ const LoginForm  = (props) => {
                         <Form.Input 
                             className='formText' 
                             type='password' fluid label='Password' 
-                            placeholder='password' 
+                            placeholder='Password' 
                             value={password} 
                             onChange={updateState} 
                             name="password"
                         />
                     </Form.Group>
 
-                <Button class = 'formBtn' type='Login'>Login</Button>
+                    <br/>
+                <br/>
+                <Button 
+                    id='registerBtn' 
+                    class = 'formBtn' 
+                    type='Submit'>
+                        Login
+                </Button>
 
                 <br/>
+                <br/>
+               
 
-                <Link to='/signUp' type ='button'>
-
+                
+                
                     <Button
                         id='registerBtn'
                         class = 'formbtn' 
                         type='SignUp'
+                        onClick={props.switchLogin}
                     >
-                    Or Click to Register
+                    Register New User
                     </Button>
 
-                </Link>
+                
 
             </Form>
-            
-        </Segment>
+         
+        </>
     )
 }
+
+
 
 export default LoginForm

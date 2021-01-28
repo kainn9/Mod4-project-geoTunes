@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
-import { User, Playlist, PlaylistTracks, Artist } from 'react-spotify-api';
+import { Playlist, PlaylistTracks, Artist } from 'react-spotify-api';
 import { SpotifyApiContext } from 'react-spotify-api';
 import { List, Segment } from 'semantic-ui-react';
-
+import SpotifyList from '../mainPageComponents/SpotifyList'
 
 const GeoPlayer = (props) => {
 
@@ -44,10 +44,10 @@ const GeoPlayer = (props) => {
                             
                         
                         />
+                
 
 
-{/* 
-                <User>
+                {/* <User>
                     {(user, loading, error) =>
                         user.data ? (
                             <ul>
@@ -57,8 +57,8 @@ const GeoPlayer = (props) => {
                         ) : <p id="rejection" style={styles.rejection}> Playlist playback is only available for those with a Premium Spotify Acct. </p>
                     }
                 </User> */}
-
-                <SpotifyApiContext.Provider value={token}> 
+                <SpotifyList token={token} selected={props}/>
+                {/* <SpotifyApiContext.Provider value={token}> 
 
                 <PlaylistTracks id={props.playlist.split(':')[2]}>
 
@@ -115,7 +115,7 @@ const GeoPlayer = (props) => {
                         </SpotifyApiContext.Provider>
                         
                         
-                        
+                         */}
                     </>
             )
             :
@@ -132,10 +132,6 @@ const GeoPlayer = (props) => {
 
 }
 
-const styles={
-    rejection: {
-        "align-self": "center"
-}
-}
+
 
 export default GeoPlayer

@@ -1,22 +1,37 @@
 import React, {useState, useCallback, useRef, useEffect} from 'react';
 import mapStyle from '../../customCss/mapStyle';
-
+import styled from 'styled-components';
+import {Button} from 'semantic-ui-react';
 
 import {
     GoogleMap,
     useLoadScript,
     Marker,
-    InfoWindow,
+    
 
 } from '@react-google-maps/api';
 import MapsDirectionsRenderer from './MapsDirectionsRenderer';
 import "@reach/combobox/styles.css";
-import '../../customCss/map.css';
+
 
 
 const libraries = ['places'];
 
 
+
+const ResetButtonDiv = styled.div`
+width:15vw;
+position:absolute;
+top:20px;
+z-index:1;
+`
+
+
+const StyledButton = styled(Button)`
+width:100%;
+
+margin:5%;
+`
 
 
 const options  = {
@@ -26,11 +41,19 @@ const options  = {
 
 };
 
+const MapDiv = styled.div`
+position:relative;
+width:auto;
+
+`
+
 
 const ShowMap = (props) => {
     const [markers, setMarkers] = useState([]);
-    const [selected, setSelected] = useState(null);
     const [isDraggable, setDrag] = useState(false);
+   
+   
+   
 
     useEffect( () => {
         document.addEventListener("keydown", () => removePin(), false);
@@ -50,8 +73,10 @@ const ShowMap = (props) => {
     const mapContainerStyle = {
 
         // this map is being doubled on the show page and also used on the infobox view. hence the different sizes here. 
-        width: '90vw',
-        height: props.infoView ? '50vh' : '58vh',
+        // width: '100%',
+       
+        width: props.infoView? '30vw':'70vw',
+        height: props.infoView ? '30vh' : '100vh',
     };
 
     const center = props.infoView ? ({
@@ -138,10 +163,17 @@ const ShowMap = (props) => {
     if (loadError) return 'Error Loading Maps';
     if (!isLoaded) return 'Loading Maps';
 // is returned only once it is loaded
+
+console.log(props)
     return (
-        <div>
+        
+        <MapDiv infoView={props.infoView}>
+           {props.home? 
            
-            <div id='showMap'>
+            <ResetButtonDiv>
+                <StyledButton onClick={props.resetMap}>Reset Map</StyledButton>
+            </ResetButtonDiv>:null
+            }
 
             <GoogleMap
                 mapContainerStyle={mapContainerStyle} //defined above
@@ -191,27 +223,13 @@ const ShowMap = (props) => {
                     getData={props.getData}
                     /> : null} 
             
-               {/* dont think I need this here anymore */}
-{/* 
-                {selected ? 
-                (<InfoWindow position={{lat: selected.lat, lng: selected.lng }} onCloseClick={()=>{
-                    setSelected(null);  
-                }}>
-                    <div>
-                        <h2>
-                            Playlist created at:
-                        </h2>
-                            <p> {formatRelative(selected.time, new Date())}</p>
-                            <h2> cords:</h2>
-                            <p>lat: {selected.lat}, lng:{selected.lng} </p>
-                    </div>
-                </InfoWindow>) : null} */}
+             
 
 
             </GoogleMap>
-            </div>
-            
-        </div>
+           
+        </MapDiv>    
+        
     );
 }
 

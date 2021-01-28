@@ -5,7 +5,7 @@ import Nav from '../components/mainPageComponents/Nav';
 import {Playlist, PlaylistTracks, Artist } from 'react-spotify-api';
 import { SpotifyApiContext } from 'react-spotify-api';
 
-import '../customCss/profile.css'
+
 import { getUser, playroutes } from '../railsserver';
 import { 
     Segment, 
@@ -14,7 +14,7 @@ import {
     Icon,
     Button
 
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
 
 
 
@@ -24,6 +24,8 @@ const ProfileContainer = (props) => {
     const [updatedProfile, setUpdatedProfile] = useState(null);
     const [markers, setMarkers] = useState([]);
     const[playlist, setPlaylist] = useState('')
+
+
     useEffect(() => {
         fetch(getUser, {
             method: 'GET',
@@ -53,7 +55,12 @@ const ProfileContainer = (props) => {
                 setPL(route.name)
             })
     }
+
+
     const [playlistID, setPlaylistID] = useState(null)
+
+
+    
     return(
         <>
         <div id='headerNav'>
@@ -124,7 +131,7 @@ const ProfileContainer = (props) => {
                     </List>):
                     <p> Looks like you don't have any routes Favorited yet!</p>}
          
-                    {playListName!=""?(
+                    {playListName!==""?(
                     <>
                             <Header id='itunesHeader' as='h4' icon>
                                 <Icon name='itunes' />
