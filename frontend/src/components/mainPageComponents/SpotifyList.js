@@ -15,7 +15,7 @@ import { SpotifyApiContext, Playlist, PlaylistTracks, Artist } from 'react-spoti
 
 const Container=styled.div`
 overflow:scroll;
-max-height:60vh;
+max-height:100%;
 `
 
 

@@ -20,7 +20,7 @@ display:flex;
 justify-content:center;
 position:relative;
 width:100%;
-// height:90%;
+height:90%;
 // background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
 `
 const Image = styled.img`
@@ -37,7 +37,7 @@ display:flex;
 flex-direction:column;
 position:absolute;
 left:10px;
-height:auto;
+height:100%;
 justify-content: flex-start;
 width:25vw;
 
