@@ -20,7 +20,7 @@ display:flex;
 justify-content:center;
 position:relative;
 width:100%;
-
+// height:90%;
 // background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
 `
 const Image = styled.img`
@@ -160,9 +160,9 @@ const RoutesContainer = (props) =>{
                          
                           
                             <Container3>
-                                <HorizontalNav user={updatedProfile} logOutHandler={props.logOutHandler}/>
+                                <HorizontalNav home={false} user={updatedProfile} logOutHandler={props.logOutHandler}/>
                                 
-                                    <ShowMap home={false} showMarkers={markers} getData={()=>null} getCords={() => null} />
+                                    <ShowMap showMarkers={markers} getData={()=>null} getCords={() => null} />
                                     <DirectionsRendered/>
                             </Container3>
                             

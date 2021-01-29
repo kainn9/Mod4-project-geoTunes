@@ -92,13 +92,13 @@ setDistance(props.distance)
 
 
 
-            <StyledNavLink to={'/create'}>
+            {/* <StyledNavLink to={'/create'}>
               {!props.createMode ? 
                   <StyledButton>Create Path</StyledButton> 
                   :
                   <StyledButton onClick={props.createPath}> Submit Path</StyledButton>
               }
-            </StyledNavLink>
+            </StyledNavLink> */}
 
             
             <Segment inverted>
@@ -131,9 +131,9 @@ setDistance(props.distance)
        
        </> :
         <>
-        <StyledNavLink to={'/home'}>
+        {/* <StyledNavLink to={'/home'}>
             <StyledButton>Home</StyledButton>
-        </StyledNavLink>
+        </StyledNavLink> */}
          <Segment inverted>
          <Header as='h2' icon='map pin' content='Total Distance' />
      </Segment>
