@@ -12,7 +12,7 @@ import mainLogo from '../../src/images/mainLogo.png';
 import HorizontalNav from '../components/mainPageComponents/HorizontalNav';
 import DirectionsRendered from '../components/MapComponents/DirectionsRendered';
 import Footer from '../components/mainPageComponents/Footer';
-
+import CreateMap from '../containers/maps/CreateMap'
 
 
 const Container1 = styled.div`
@@ -82,16 +82,28 @@ const RoutesContainer = (props) =>{
      let y= durationMath(obj)
      setDistance(x)
      setDuration(y)
+   
 
     }
 
     const distanceMath = (obj) => {
+        if (obj.routes[0].legs.length>1){
+        
+        
         return obj.routes[0].legs.reduce((a,b) => parseFloat(a.distance.text) + parseFloat(b.distance.text))
-
+        } else {
+            return parseFloat(obj.routes[0].legs[0].distance.text)
+        }
+     
     }
 
     const durationMath = (obj)=>{
-        return obj.routes[0].legs.reduce((a,b) => parseFloat(a.duration.text) + parseFloat(b.duration.text))
+        if (obj.routes[0].legs.length>1){
+            return obj.routes[0].legs.reduce((a,b) => parseFloat(a.duration.text) + parseFloat(b.duration.text))
+        } else {
+            return parseFloat(obj.routes[0].legs[0].duration.text)
+        }
+     
     }
 
     const patchRequest = () => {
@@ -148,8 +160,8 @@ const RoutesContainer = (props) =>{
          
           , [token])
     
-    const [isDragable, toggle] = useToggle(false);
-        
+    const [isDraggable, toggle] = useToggle(false);
+        console.log(isDraggable, 'drag')
     return (
         <>
 
@@ -175,7 +187,7 @@ const RoutesContainer = (props) =>{
                             <Container3>
                                 <HorizontalNav home={false} user={updatedProfile} logOutHandler={props.logOutHandler}/>
                                 
-                                    <ShowMap showMarkers={markers} getData={getData} getCords={() => null} />
+                                    {toggle?<CreateMap setMarkers={(e)=>setMarkers(e)} getData={getData} markers={markers}/> :<ShowMap showMarkers={markers} getData={getData} getCords={() => null} />}
                                     <DirectionsRendered/>
                             </Container3>
                             

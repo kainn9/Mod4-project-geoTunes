@@ -143,7 +143,7 @@ console.log(props.distance, 'distance here')
 
 <StyledNavLink to={'/create'}>
 {!props.createMode ? 
-   <StyledButton>Create Path</StyledButton> 
+   null
    :
    <StyledButton onClick={props.createPath}> Submit Path</StyledButton>
 }

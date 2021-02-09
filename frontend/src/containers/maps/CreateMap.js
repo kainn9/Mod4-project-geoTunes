@@ -146,11 +146,12 @@ document.addEventListener("keydown", (e) => removePin(e), false);
                         scaledSize: new window.google.maps.Size(30,30), 
                         origin: new window.google.maps.Point(0,0), 
                         anchor: new window.google.maps.Point(15,15),
-                        //draggable: true,
+                        draggable: true,
                     }}
-                    onClick={()=>{
-                        props.setSelected(marker);
-                        }}
+                    // onClick={()=>{
+                    //     props.setSelected(marker);
+                    //     }}
+
                         onDragEnd={(e) => {
                             // console.log(marker.lat);
                             // console.log(e.latLng.lat());
@@ -165,7 +166,7 @@ document.addEventListener("keydown", (e) => removePin(e), false);
                       />
                     ))}
                    
-                   {props.markers.length>1? <MapsDirectionsRenderer getData ={() => null} getCords={() => null} places={props.markers}/> : null} 
+                   {props.markers.length>1? <MapsDirectionsRenderer getData ={props.getData} getCords={() => null} places={props.markers}/> : null} 
                    
     
                     
