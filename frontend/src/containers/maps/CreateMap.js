@@ -153,9 +153,7 @@ document.addEventListener("keydown", (e) => removePin(e), false);
                     //     }}
 
                         onDragEnd={(e) => {
-                            // console.log(marker.lat);
-                            // console.log(e.latLng.lat());
-                            // console.log(e.latLng.lng());
+                       
                             marker.lat = e.latLng.lat();
                             marker.lng = e.latLng.lng();
                             let updatedMarkers = [...props.markers];

@@ -133,7 +133,7 @@ const CreateContainer = (props) => {
         })
         .then()
         .then( () => {
-            console.log(markers)
+            
             alert('Route Created')
             props.history.push('/home')
             //window.location.reload()
@@ -142,12 +142,12 @@ const CreateContainer = (props) => {
     }
 
     const getData = (obj) => {
-        console.log('getData:', obj)
+        
         let x= distanceMath(obj)
         let y= durationMath(obj)
         setDistance(x)
         setDuration(y)
-        console.log(x, 'working?')
+        
     
    
        }

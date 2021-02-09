@@ -38,7 +38,7 @@ const [distance, setDistance] = useState(null)
 useEffect(()=>{
 
 },[props.duration])
-console.log(props.distance, 'distance here')
+
 
   return(
      

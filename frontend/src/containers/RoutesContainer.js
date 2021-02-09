@@ -77,12 +77,12 @@ const RoutesContainer = (props) =>{
     const [duration, setDuration] = useState('')
 
     const getData = (obj) => {
-     console.log('getData:', obj)
+     
      let x= distanceMath(obj)
      let y= durationMath(obj)
      setDistance(x)
      setDuration(y)
-     console.log(x, 'working?')
+     
    
 
     }
@@ -111,7 +111,7 @@ const RoutesContainer = (props) =>{
     }
 
     const patchRequest = () => {
-        console.log(markers, 'patch')
+        
         let options={
             method:'PATCH',
             headers:{
