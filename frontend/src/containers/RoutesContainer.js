@@ -82,6 +82,7 @@ const RoutesContainer = (props) =>{
      let y= durationMath(obj)
      setDistance(x)
      setDuration(y)
+     console.log(x, 'working?')
    
 
     }
@@ -89,9 +90,10 @@ const RoutesContainer = (props) =>{
     const distanceMath = (obj) => {
         if (obj.routes[0].legs.length>1){
         
-        
-        return obj.routes[0].legs.reduce((a,b) => parseFloat(a.distance.text) + parseFloat(b.distance.text))
+        let z= obj.routes[0].legs.map((ele) => parseFloat(ele.distance.text))
+        return z.reduce((a,b) => a+b)
         } else {
+          
             return parseFloat(obj.routes[0].legs[0].distance.text)
         }
      
@@ -99,7 +101,9 @@ const RoutesContainer = (props) =>{
 
     const durationMath = (obj)=>{
         if (obj.routes[0].legs.length>1){
-            return obj.routes[0].legs.reduce((a,b) => parseFloat(a.duration.text) + parseFloat(b.duration.text))
+            let z= obj.routes[0].legs.map((ele) => parseFloat(ele.duration.text))
+            return z.reduce((a,b) => a+b)
+
         } else {
             return parseFloat(obj.routes[0].legs[0].duration.text)
         }
@@ -107,7 +111,7 @@ const RoutesContainer = (props) =>{
     }
 
     const patchRequest = () => {
-        
+        console.log(markers, 'patch')
         let options={
             method:'PATCH',
             headers:{
@@ -115,7 +119,7 @@ const RoutesContainer = (props) =>{
                 'headers':'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
-            body: JSON.stringify({cords: newArray})
+            body: JSON.stringify({cords: markers})
         }
 
         fetch(playroutes + props.routerID, options).then().then()
@@ -161,7 +165,8 @@ const RoutesContainer = (props) =>{
           , [token])
     
     const [isDraggable, toggle] = useToggle(false);
-        console.log(isDraggable, 'drag')
+      
+
     return (
         <>
 

@@ -95,6 +95,9 @@ const CreateContainer = (props) => {
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
     const [spotToken, setSpotToken] = useState(localStorage.getItem('spotifyAuthToken'));
 
+    const [distance, setDistance] = useState('')
+    const [duration, setDuration] = useState('')
+
 
 
     useEffect(() => {
@@ -138,11 +141,42 @@ const CreateContainer = (props) => {
     
     }
 
-
+    const getData = (obj) => {
+        console.log('getData:', obj)
+        let x= distanceMath(obj)
+        let y= durationMath(obj)
+        setDistance(x)
+        setDuration(y)
+        console.log(x, 'working?')
+    
+   
+       }
    
 
 
 
+    const distanceMath = (obj) => {
+        if (obj.routes[0].legs.length>1){
+        
+        let z= obj.routes[0].legs.map((ele) => parseFloat(ele.distance.text))
+        return z.reduce((a,b) => a+b)
+        } else {
+          
+            return parseFloat(obj.routes[0].legs[0].distance.text)
+        }
+     
+    }
+
+    const durationMath = (obj)=>{
+        if (obj.routes[0].legs.length>1){
+            let z= obj.routes[0].legs.map((ele) => parseFloat(ele.duration.text))
+            return z.reduce((a,b) => a+b)
+
+        } else {
+            return parseFloat(obj.routes[0].legs[0].duration.text)
+        }
+     
+    }
 
 
     
@@ -187,7 +221,7 @@ const CreateContainer = (props) => {
                 <HorizontalNav home={false} logOutHandler={props.logOutHandler} createPath={createPath} createMode={true}/>
              
             
-                <CreateMap setMarkers={(e)=>setMarkers(e)} markers={markers} />
+                <CreateMap setMarkers={(e)=>setMarkers(e)} markers={markers} getData={getData}/>
             
             </Container3>
 
