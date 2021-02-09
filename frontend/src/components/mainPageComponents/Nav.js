@@ -36,9 +36,9 @@ const Nav = (props) => {
 const [distance, setDistance] = useState(null)
 
 useEffect(()=>{
-setDistance(props.distance)
-},[props.disance])
-// console.log(props.user)
+
+},[props.duration])
+console.log(props.distance, 'distance here')
 
   return(
      
@@ -138,7 +138,7 @@ setDistance(props.distance)
          <Header as='h2' icon='map pin' content='Total Distance' />
      </Segment>
 
-     <p>{distance}</p>    
+     <p>{props.distance} miles</p>    
 
 
 <StyledNavLink to={'/create'}>
@@ -151,9 +151,9 @@ setDistance(props.distance)
 
 
 <Segment inverted>
- <Header as='h2' icon='heartbeat' content='Favorite Routes' />
+ <Header as='h2' icon='heartbeat' content='Total Duration' />
 </Segment>
-<p>{`${parseFloat(distance) * 20}` } minutes</p>
+<p>{props.duration} minutes walking</p>
 </>
        
        

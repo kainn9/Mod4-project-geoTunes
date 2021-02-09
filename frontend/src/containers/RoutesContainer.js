@@ -74,14 +74,25 @@ const RoutesContainer = (props) =>{
     const [markers, setMarkers] = useState([]);
     const [newArray, setNewArray]= useState([]);
     const [distance, setDistance] = useState('')
+    const [duration, setDuration] = useState('')
 
     const getData = (obj) => {
      console.log('getData:', obj)
-     setDistance(obj.routes[0].legs[0].distance.text)
-     console.log(obj.routes[0])
+     let x= distanceMath(obj)
+     let y= durationMath(obj)
+     setDistance(x)
+     setDuration(y)
+
     }
 
+    const distanceMath = (obj) => {
+        return obj.routes[0].legs.reduce((a,b) => parseFloat(a.distance.text) + parseFloat(b.distance.text))
 
+    }
+
+    const durationMath = (obj)=>{
+        return obj.routes[0].legs.reduce((a,b) => parseFloat(a.duration.text) + parseFloat(b.duration.text))
+    }
 
     const patchRequest = () => {
         
@@ -101,6 +112,8 @@ const RoutesContainer = (props) =>{
 
     
     const [routeName, setRouteName] = useState('');
+
+   
     useEffect(
         ()=> {
                 localStorage.setItem('currentRoute', props.routerID);
@@ -110,7 +123,7 @@ const RoutesContainer = (props) =>{
                 })
                 .then(res=>res.json())
                 .then(route =>{
-                    console.log(route)
+                    
                     let cords = prepPinRender(route);
                     setRouteObj(route);
                     setMarkers(cords);
@@ -126,7 +139,7 @@ const RoutesContainer = (props) =>{
           })
           .then( r => r.json())
           .then(foundProfile => { 
-              console.log(foundProfile)
+              
               setUpdatedProfile(foundProfile) 
           })
           document.body.style.height="1400px"
@@ -136,7 +149,7 @@ const RoutesContainer = (props) =>{
           , [token])
     
     const [isDragable, toggle] = useToggle(false);
-
+        
     return (
         <>
 
@@ -150,7 +163,7 @@ const RoutesContainer = (props) =>{
                             <ImageContainer>
                                 <Image src={mainLogo}></Image>
                             </ImageContainer>
-                            {updatedProfile && routeObj? <Nav page={'show'} token={token} selected={routeObj} createMode={false}  user={updatedProfile} distance={distance}/> :null}
+                            {updatedProfile && routeObj? <Nav page={'show'} token={token} selected={routeObj} createMode={false}  user={updatedProfile} distance={distance} duration={duration}/> :null}
                            {/* {routeObj.playlist && token? <SpotifyList token={props.token} selected={routeObj}/>:null} */}
                            
                            <UpdateRouteToggleButton toggle={toggle} patch={patchRequest} routeID={props.routerID} user={props.user.user} cords={newArray} /> 
@@ -162,7 +175,7 @@ const RoutesContainer = (props) =>{
                             <Container3>
                                 <HorizontalNav home={false} user={updatedProfile} logOutHandler={props.logOutHandler}/>
                                 
-                                    <ShowMap showMarkers={markers} getData={()=>null} getCords={() => null} />
+                                    <ShowMap showMarkers={markers} getData={getData} getCords={() => null} />
                                     <DirectionsRendered/>
                             </Container3>
                             

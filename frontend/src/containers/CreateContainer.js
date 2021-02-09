@@ -165,7 +165,21 @@ const CreateContainer = (props) => {
 
 
                 <Nav user={props.user} createMode={true} logOutHandler={props.logOutHandler} createPath={createPath} />
-
+                
+                <UserSpotPlaylists spotToken={spotToken} setSelectedPlaylist={(e)=>setSelectedPlaylist(e)} name={name} setName={(e)=>setName(e)}/> 
+                {markers.length > 0 && name && selectedPlaylist?
+       
+                    
+       <StyledNavLink to={'/create'}>
+             < ButtonContainer>
+              
+                  <StyledButton onClick={()=>createPath()}> Submit Path</StyledButton>
+               
+               
+             </ButtonContainer>
+            </StyledNavLink>
+        
+        : <h3> Chart a course and Select a Playlist to Continue!</h3>}
            </Container2>
 
            <Container3>
@@ -185,20 +199,10 @@ const CreateContainer = (props) => {
             <SpotifyAuthScreen/>
        } 
        </Container1>   
-       <UserSpotPlaylists spotToken={spotToken} setSelectedPlaylist={(e)=>setSelectedPlaylist(e)} name={name} setName={(e)=>setName(e)}/> 
        
        
-       {markers.length > 0 && name && selectedPlaylist?
-       <StyledNavLink to={'/create'}>
-             < ButtonContainer>
-              
-                  <StyledButton onClick={props.createPath}> Submit Path</StyledButton>
-               
-               
-             </ButtonContainer>
-            </StyledNavLink>
-        
-        : <h3> Chart a course and Select a Playlist to Continue!</h3>}
+       
+       
         </Page>
         <Footer/>
         </>
